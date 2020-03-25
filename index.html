@@ -2,7 +2,7 @@
 <html>
 <body>
 
-<h2>.</h2>
+<h2 id="title">.</h2>
 
 <p id="app"></p>
 
@@ -23,6 +23,8 @@ fetch(url)
     (recovered+deaths) / cases <br>
     (${data.recovered}+${data.deaths}) / ${data.cases} = ${((data.recovered+data.deaths)/data.cases).toFixed(2)}
     `;
+  
+    document.getElementById('title').innerHTML = `${((data.recovered+data.deaths)/data.cases).toFixed(2)}`
   });
 
 </script>
