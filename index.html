@@ -20,8 +20,8 @@ fetch(url)
   .then((data) => {
     //console.log(data);
     document.getElementById('app').innerHTML = `
-    recovered / cases <br>
-    ${data.recovered} / ${data.cases} = ${data.recovered/data.cases}
+    (recovered+deaths) / cases <br>
+    (${data.recovered}+deaths) / ${data.cases} = ${(data.recovered+data.deaths)/data.cases}
     `;
   });
 
