@@ -21,7 +21,7 @@ fetch(url)
     //console.log(data);
     document.getElementById('app').innerHTML = `
     (recovered+deaths) / cases <br>
-    (${data.recovered}+${data.deaths}) / ${data.cases} = ${(data.recovered+data.deaths)/data.cases}
+    (${data.recovered}+${data.deaths}) / ${data.cases} = ${(data.recovered+data.deaths)/data.cases.toFixed(2)}
     `;
   });
 
