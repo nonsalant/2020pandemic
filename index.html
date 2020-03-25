@@ -15,7 +15,7 @@ fetch(url)
 .then(res => res.json())
 .then((out) => {
 
-  var obj = JSON.parse(txt);
+  var obj = JSON.parse(out);
   document.getElementById("demo").innerHTML = obj.cases + " / " + obj.recovered + ' = ' + (obj.cases/obj.recovered);
 
 //document.write(obj.cases)
