@@ -4,10 +4,10 @@
 
 <h2>Create Object from JSON String</h2>
 
-<p id="demo"></p>
+<p id="app"></p>
 
 <script>
-let txt = '{"cases":422966,"deaths":18906,"recovered":109143}';
+//let txt = '{"cases":422966,"deaths":18906,"recovered":109143}';
 
 let url = 'https://coronavirus-19-api.herokuapp.com/all';
 
@@ -16,8 +16,10 @@ fetch(url)
     return response.json();
   })
   .then((data) => {
-    console.log(data);
-    document.getElementById("demo").innerHTML = data.cases + " / " + data.recovered + ' = ' + (data.cases/data.recovered);
+    //console.log(data);
+    document.getElementById('app').innerHTML = `
+    ${data.cases} + ${data.recovered} = ${data.cases/data.recovered}
+    `;
   });
 
 </script>
