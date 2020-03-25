@@ -1,18 +1,29 @@
+<!DOCTYPE html>
 <html>
-<head>
-</head>
 <body>
 
+<h2>Create Object from JSON String</h2>
+
+<p id="demo"></p>
+
 <script>
+let txt = '{"cases":422966,"deaths":18906,"recovered":109143}';
+
 let url = 'https://coronavirus-19-api.herokuapp.com/all';
 
 fetch(url)
 .then(res => res.json())
 .then((out) => {
-  var obj = JSON.parse(out);
-  document.write(obj.cases)
+
+  var obj = JSON.parse(txt);
+  document.getElementById("demo").innerHTML = obj.cases + " / " + obj.recovered + ' = ' + (obj.cases/obj.recovered);
+
+//document.write(obj.cases)
 })
 .catch(err => { throw err });
+
+
 </script>
+
 </body>
 </html>
