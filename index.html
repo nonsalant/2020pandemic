@@ -12,16 +12,13 @@ let txt = '{"cases":422966,"deaths":18906,"recovered":109143}';
 let url = 'https://coronavirus-19-api.herokuapp.com/all';
 
 fetch(url)
-.then(res => res.json())
-.then((out) => {
-
-  var obj = JSON.parse(out.json());
-  document.getElementById("demo").innerHTML = obj.cases + " / " + obj.recovered + ' = ' + (obj.cases/obj.recovered);
-
-//document.write(obj.cases)
-})
-.catch(err => { throw err });
-
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
+    document.getElementById("demo").innerHTML = data.cases + " / " + data.recovered + ' = ' + (data.cases/data.recovered);
+  });
 
 </script>
 
