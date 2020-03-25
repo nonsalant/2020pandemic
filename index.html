@@ -9,8 +9,8 @@ let url = 'https://coronavirus-19-api.herokuapp.com/all';
 fetch(url)
 .then(res => res.json())
 .then((out) => {
-  console.log('Checkout this JSON! ', out);
-  document.write(out.json())
+  var obj = JSON.parse(out);
+  document.write(obj.cases)
 })
 .catch(err => { throw err });
 </script>
