@@ -21,7 +21,7 @@ fetch(url)
     //console.log(data);
     document.getElementById('app').innerHTML = `
     (recovered+deaths) / cases <br>
-    (${(data.recovered/1000).toFixed(2)}K+${(data.deaths/1000).toFixed(2)}K) / ${data.cases} = ${((data.recovered+data.deaths)/data.cases).toFixed(2)}
+    (${(data.recovered/1000).toFixed(0)}K+${(data.deaths/1000).toFixed(0)}K) / ${data.cases} = ${((data.recovered+data.deaths)/data.cases).toFixed(2)}
     `;
   
     document.getElementById('title').innerHTML = `${((data.recovered+data.deaths)/data.cases).toFixed(2)}`
