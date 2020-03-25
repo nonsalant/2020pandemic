@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html>
-<body style="font-family:sans-serif;">
+<head>
+  <svg xmlns="http://w3.org/2000/svg" viewBox="0 0 100 100">
+  <text y=".9em" font-size="90">🦠</text>
+  </svg>
+</head>
+
+<body style="font-family:sans-serif; font-size:18px;">
 
 <h2 id="title">.</h2>
 
 <p id="app"></p>
 
-  <p><a href="https://coronavirus-19-api.herokuapp.com/">https://coronavirus-19-api.herokuapp.com/</a></p>  
+  <p style="text-align:right; float:right; font-size:.6em; line-height:2em;">
+  API for live information about COVID-19
+  <br>
+  GET https://coronavirus-19-api.herokuapp.com/all -> global info
+  <br>
+  GET https://coronavirus-19-api.herokuapp.com/countries -> all countries info
+  <br>
+  GET https://coronavirus-19-api.herokuapp.com/countries/{countryName} -> country specific information
+  <br>
+  <small><a href="https://github.com/javieraviles/covidAPI">github.com/javieraviles/covidAPI</a></small>
+  </p>  
 
 <script>
 //let txt = '{"cases":422966,"deaths":18906,"recovered":109143}';
@@ -20,7 +36,7 @@ fetch(url)
   .then((data) => {
     //console.log(data);
     document.getElementById('app').innerHTML = `
-    (recovered+deaths)/cases <br>
+    <small>(recovered+deaths) / cases</small> <br><br>
     ( 
     <b style="color:green">${(data.recovered/1000).toFixed(0)}K</b>
     +
