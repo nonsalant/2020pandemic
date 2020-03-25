@@ -20,7 +20,7 @@ fetch(url)
   .then((data) => {
     //console.log(data);
     document.getElementById('app').innerHTML = `
-    cases / recovered = 
+    cases / recovered <br>
     ${data.cases} / ${data.recovered} = ${data.cases/data.recovered}
     `;
   });
