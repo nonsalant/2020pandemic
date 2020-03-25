@@ -2,9 +2,11 @@
 <html>
 <body>
 
-<h2>Create Object from JSON String</h2>
+<h2>.</h2>
 
 <p id="app"></p>
+
+  <p><a href="https://coronavirus-19-api.herokuapp.com/">https://coronavirus-19-api.herokuapp.com/</a></p>  
 
 <script>
 //let txt = '{"cases":422966,"deaths":18906,"recovered":109143}';
@@ -18,7 +20,8 @@ fetch(url)
   .then((data) => {
     //console.log(data);
     document.getElementById('app').innerHTML = `
-    ${data.cases} + ${data.recovered} = ${data.cases/data.recovered}
+    cases / recovered = 
+    ${data.cases} / ${data.recovered} = ${data.cases/data.recovered}
     `;
   });
 
