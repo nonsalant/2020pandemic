@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<body>
+<body style="font-family:sans-serif;">
 
 <h2 id="title">.</h2>
 
@@ -21,13 +21,20 @@ fetch(url)
     //console.log(data);
     document.getElementById('app').innerHTML = `
     (recovered+deaths)/cases <br>
-    ( ${(data.recovered/1000).toFixed(0)}K
+    ( 
+    <b style="color:green">${(data.recovered/1000).toFixed(0)}K</b>
     +
-    ${(data.deaths/1000).toFixed(0)}K ) / ${(data.cases/1000).toFixed(0)}K 
-    = ${((data.recovered+data.deaths)/data.cases).toFixed(2)}
+    <b style="
+    background-color:#111; color: #eee; border-radius:.1em; font-weight:normal; padding:0 .2em;
+    ">${(data.deaths/1000).toFixed(0)}K</b> ) /
+    <b style="color:red">${(data.cases/1000).toFixed(0)}K</b> 
+    = 
+    ${((data.recovered+data.deaths)/data.cases).toFixed(2)}
+    </b>
     `;
   
     document.getElementById('title').innerHTML = `${((data.recovered+data.deaths)/data.cases).toFixed(2)}`
+  
   });
 
 </script>
