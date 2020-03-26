@@ -61,7 +61,7 @@ fetch(url)
     </b>
     `;
   
-    document.getElementById('title').innerHTML = `${((data.recovered+data.deaths)/data.cases).toFixed(2) * 100}%`
+    document.getElementById('title').innerHTML = `${(((data.recovered+data.deaths)/data.cases).toFixed(2) * 100).toFixed(0)}%`
   
   });
 
