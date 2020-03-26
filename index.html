@@ -7,7 +7,7 @@
 
 <body style="font-family:sans-serif; font-size:18px;">
 
-<h2 id="title" style="color:#ffcccc;
+<h2 id="title" style="color:#ffcccc; padding-left:0;
     background-color:#ffeeee; color: #222; border-radius:.1em; font-weight:normal; padding:0 .2em;
     " >.</h2>
 
@@ -63,7 +63,8 @@ fetch(url)
     </b>
     `;
   
-    document.getElementById('title').innerHTML = `<div style="width:29%;
+    document.getElementById('title').innerHTML = `
+<div style="width:29%; float:left;
     background-color:#ddd; color: #222; border-radius:.1em; font-weight:normal; padding:0 .2em;
     ">
 ${(((data.recovered+data.deaths)/data.cases).toFixed(2) * 100).toFixed(0)}%
