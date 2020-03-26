@@ -61,12 +61,12 @@ fetch(url)
     </b>
     `;
   
-    document.getElementById('title').innerHTML = `${((data.recovered+data.deaths)/data.cases).toFixed(2)}`
+    document.getElementById('title').innerHTML = `${((data.recovered+data.deaths)/data.cases).toFixed(2) * 100}%`
   
   });
 
 
-// chart.js
+// chart.js (manual impt for now)
 
 var ctx = document.getElementById('myChart').getContext('2d');
 var chart = new Chart(ctx, {
