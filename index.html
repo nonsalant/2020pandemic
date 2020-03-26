@@ -65,7 +65,8 @@ fetch(url)
   
     document.getElementById('title').innerHTML = `
 <div style="width:29%; float:left;
-    background-color:#ddd; color: #222; border-radius:.1em; font-weight:normal; padding:0 .2em;
+    background-color:#ddd; color: #222; border-radius:.1em; font-weight:normal; 
+    padding:0 .2em 0 0; margin-right:.2em;
     ">
 ${(((data.recovered+data.deaths)/data.cases).toFixed(2) * 100).toFixed(0)}%
 </div>
