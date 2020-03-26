@@ -7,8 +7,8 @@
 
 <body style="font-family:sans-serif; font-size:18px;">
 
-<h2 id="title" style="width:29%;
-    background-color:#ddd; color: #222; border-radius:.1em; font-weight:normal; padding:0 .2em;
+<h2 id="title" style="
+    background-color:#fffdfd; color: #222; border-radius:.1em; font-weight:normal; padding:0 .2em;
     " >.</h2>
 
 <div id="app"></div>
@@ -63,8 +63,13 @@ fetch(url)
     </b>
     `;
   
-    document.getElementById('title').innerHTML = `${(((data.recovered+data.deaths)/data.cases).toFixed(2) * 100).toFixed(0)}%`
-  
+    document.getElementById('title').innerHTML = `
+<span style="width:29%;
+    background-color:#ddd; color: #222; border-radius:.1em; font-weight:normal; padding:0 .2em;
+    ">
+${(((data.recovered+data.deaths)/data.cases).toFixed(2) * 100).toFixed(0)}%
+</span>`
+ 
   });
 
 
