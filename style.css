@@ -5,6 +5,39 @@ body {
   background-color: #ffff0007;
   background-blend-mode: soft-light;
   font-family: "Open Sans", sans-serif;
+  font-feature-settings: 'tnum';
+  font-variant-numeric: tabular-nums;
+  font-size:19px;
+}
+
+@media (max-width: 600px) {
+  body { font-size:16px; }
+  .block,
+  .legend {
+    font-size:.9em;
+    font-size:1em;
+  }
+}
+@media (max-width: 500px) {
+  .block,
+  .legend {
+    font-size: .75em;
+    font-size:.9em;
+  }
+}
+@media (max-width: 400px) {
+  .block,
+  .legend {
+    font-size: .65em;
+    font-size:.75em;
+  }
+}
+@media (max-width: 350px) {
+  .block,
+  .legend {
+    font-size: .65em;
+    font-size:.65em;
+  }
 }
 
 a {
@@ -15,15 +48,13 @@ a:hover {
   text-decoration: underline;
 }
 
-.block a {
-}
-
 hr {
   opacity: 0.5;
 }
 
 .contain {
   max-width: 35em;
+  max-width: 42rem;
   margin: auto;
   color: #111;
   margin-bottom: 6em;
@@ -110,18 +141,6 @@ hr {
   display: block;
   margin: 0.3em 0 0.3em 0.3em;
   opacity: 0.75;
-}
-
-
-@media (max-width: 500px) {
-  .block {
-    font-size: 0.9em;
-  }
-}
-@media (max-width: 400px) {
-  .block {
-    font-size: 0.75rem;
-  }
 }
 
 .block:empty:after {
