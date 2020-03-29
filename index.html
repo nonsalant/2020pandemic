@@ -10,53 +10,21 @@
 
 <div class="contain">
 
-  <h1 style="color:#999;
-             text-transform:uppercase;
-             letter-spacing:.1em;
-             font-weight:normal;
-             font-size:1.5em;
-             margin-top:1em;">
+  <h1 class="logo">
     <span id="virus">🦠</span>
-    coronavirus
-    containment stats
+    Coronavirus
+    Containment Stats
   </h1>
   <h3>
     Inactivated* Virus, worldwide 🌎<br>
-    <small style="display:none;">
-      (as % of total cases)
-    </small>
   </h3>
 
-  <h3 id="hero" style="color:#ffcccc; width:100%;
-    display:block; overflow:visible;
-    background-color:#ffeeee; color: #222; border-radius:.1em; font-weight:normal;
-    background: #ffff0022; border: solid 1px #ddd;
-    padding:0 .2em 0 0; box-sizing: border-box;
-                       display:flex;
-                       align-items:center;
-                       text-align:center;
-                       min-height:2em;
-    ">
-    <div class="percentage-bar" style="width:3em;
-          min-width: 1.5em;
-          float:left; text-align:center;
-          background-color:#ddd; color: #222; border-radius:.1em; font-weight:normal; 
-          padding:0 .2em; margin:0; margin-right:.2em;
-          display:flex; justify-content:center; align-items:center;
-          flex-direction:column; line-height:.75em; padding-top:.25em;
-          height:2em;
-
-          ">
+  <h3 id="hero">
+    <div class="percentage-bar" style="width:3em;">
       &nbsp;&nbsp;…%
     </div>
-    <small style="font-size:.75em; line-height:1em; 
-      float:left; display:block;
-      margin:.3em 0 .3em .3em;
-      opacity:.75;">
-      …%
-      🦠 ACTIVE CASES
-      <span style="display:none; margin-left:-.25em">
-        &lsaquo;</span>
+    <small class="percentage-empty">
+      …% 🦠 ACTIVE CASES
     </small>
   </h3>
 
@@ -65,11 +33,7 @@
     <br><br>
   </p>
 
-  <h3 style="display:none">
-    Containment Ratio**
-  </h3>
-
-  <h3 style="">
+  <h3>
     How different countries have dealt with the pandemic so far
     <small style="font-weight:normal;">
       (<label for="autorefresh">data auto-refreshes</label>&thinsp;<input onclick="toggle_auto_refresh(this.checked)" type="checkbox" checked id="autorefresh" name="autorefresh">)
@@ -77,13 +41,19 @@
   </h3>
 
   <small class="legend">
-    <strong style="display:none;">Legend:</strong> (
-    <span style="color:green; background:#fafffacc; border-radius:1px; padding:0 .1em;">Recoveries</span>
+    (
+    <span class="green" style="background:#fafffacc;">
+      Recoveries
+    </span>
     +
-    <span style="color:#efefef; background:#000; border-radius:1px; padding:0 .1em;">Deaths</span>
+    <span class="deaths">
+      Deaths
+    </span>
     ) /
-    <span style="color: red; background:#fffafacc; border-radius:1px; padding:0 .1em;">Cases</span> =
-    <span style="color:#000; background:#ddd; border radious: 1px; padding:0 .1em;">
+    <span class="red" style="background:#fffafacc;">
+      Cases
+    </span> =
+    <span class="gray">
       C. Ratio**
     </span>
   </small>
@@ -112,7 +82,7 @@
   <div id="Moldova" class="block"></div>
 
   <p>
-    ** The <i>Containmnet Ratio</i> (C. Ratio)
+    ** The <i>Containmnet Ratio</i> (C. RATIO)
     represents the proportion
     of cases where the Virus has become unable to spread because the person carring it has either died or recovered.
   </p>
