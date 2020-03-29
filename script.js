@@ -3,7 +3,7 @@ let auto_refresh = setInterval(render_stuff, 3000);
 
 function render_stuff() {
   render_hero();
-  renderBlocks();
+  render_blocks();
 }
 
 function toggle_auto_refresh(checked) {
@@ -59,7 +59,7 @@ function render_hero() {
     });
 }
 
-function renderBlocks() {
+function render_blocks() {
   let blocks = document.getElementsByClassName("block");
   for (let i = 0; i < blocks.length; i++) {
     render(blocks[i].id);
