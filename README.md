@@ -1,5 +1,5 @@
 # 2020pandemic
-Virus “inactivation" as a % of the total number of cases
+*Virus “inactivation" as a % of the total number of cases*
 
 If the percentage in the gray box (currently at 26%) reaches 100, it means there are no more active COVID-19 cases.
 
