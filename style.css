@@ -41,6 +41,43 @@ body {
   }
 }
 
+/* 
+SVG underline
+https://codepen.io/nonsalant/pen/MxoQgR
+*/
+
+u {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+}
+u::after {
+  content: '';
+  position: absolute;
+  bottom: -0.125rem;
+  left: -0.5rem;
+  right: -0.5rem;
+  height: 0.75rem;
+  z-index: -1;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/664131/underline.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity:.3;
+}
+
+p > u {
+  font-weight: 400;
+}
+p > u::after {
+  bottom: -0.2rem;
+  height: 0.5rem;
+  left: -0.25rem;
+  right: -0.25rem;
+}
+
+/* /SVG underline */
+
+
 a {
   color: #000066;
   text-decoration: none;
@@ -77,10 +114,10 @@ hr {
 
 #virus {
   background: #fff6f6;
-  background: #ffff00;
+  background: #ffff00; background: none;
   border: dashed 1px #ddd;
   border-radius: 100%;
-  width: 1.5em;
+  width: 1.75em;
   height: 1.5em;
   display: block;
   float: left;
@@ -91,7 +128,6 @@ hr {
   align-items: center;
   justify-content: center;
   padding: 0;
-  background: none;
 }
 
 #hero {
@@ -101,7 +137,7 @@ hr {
   overflow: visible;
   background-color: #ffeeee;
   color: #222;
-  border-radius: 0.1em;
+  border-radius: 0.25em;
   font-weight: normal;
   background: #ffff0022;
   border: solid 1px #ddd;
@@ -121,7 +157,8 @@ hr {
   text-align: center;
   background-color: #ddd;
   color: #222;
-  border-radius: 0.1em;
+  border-radius: .5em .5em .5em .5em;
+  border-radius: .25em;
   font-weight: normal;
   padding: 0 0.2em;
   margin: 0;
