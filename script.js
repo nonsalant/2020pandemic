@@ -1,5 +1,5 @@
 render_stuff();
-let auto_refresh = setInterval(render_stuff, 3000);
+//let auto_refresh = setInterval(render_stuff, 3000);
 
 function render_stuff() {
   render_hero();
@@ -9,8 +9,10 @@ function render_stuff() {
 function toggle_auto_refresh(checked) {
   if (checked) {
     auto_refresh = setInterval(render_stuff, 3000);
+    document.querySelector('.legend').style.background='#ffff1122';
   } else {
     clearInterval(auto_refresh);
+    document.querySelector('.legend').style.background='none';
   }
 }
 
