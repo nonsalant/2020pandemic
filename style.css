@@ -64,7 +64,7 @@ u::after {
   background-repeat: no-repeat;
   background-size: cover;
   /*   opacity:.3; */
-  filter: sepia(1);
+  filter: sepia(.75);
 }
 p > u {
   font-weight: 400;
@@ -239,12 +239,14 @@ hr {
 
 #Global {
   background:#ccc;
+  transition:all .3s ease-out;
 }
 
 .gray,
 .red,
 .green {
   background-color: #ddd;
+  background-color: #ddddddee;
   color: #222;
   border-radius: 0.1em;
   font-weight: normal;
