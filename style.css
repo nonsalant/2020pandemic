@@ -262,7 +262,14 @@ input, button {
 }
 
 .close {
-  margin-right: auto;
+    margin-right: auto;
+    padding-bottom: .2em;
+    background: none;
+    border: none;
+    opacity: .75;
+}
+.close:hover {
+    opacity: 1;
 }
 
 .add-country {
