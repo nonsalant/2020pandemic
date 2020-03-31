@@ -266,5 +266,23 @@ input, button {
 }
 
 .add-country {
-  float:right;
+  white-space:nowrap;
+  margin-left:.3em;
+}
+/* @media (max-width:500px) {
+  .add-country,
+  #toggle_close_buttons {
+    float:none;
+    margin-left:auto; margin-right:auto;
+    
+  }
+} */
+@media (min-width:500px) {
+  .add-country {
+    float:right;
+  }
+}
+
+input::-webkit-calendar-picker-indicator {
+  opacity: 100;
 }
