@@ -138,19 +138,19 @@ function toggle_close_buttons(element) {
         toggle_auto_refresh(false);
       }
 
-      element.innerHTML = '&nbsp;&nbsp;&nbsp;✔ Done deleting.&nbsp;&nbsp;&nbsp;';
+      element.innerHTML = '&nbsp;&nbsp;&nbsp;Done deleting.&nbsp;&nbsp;';
       for (let i=0; i<close_buttons.length; i++) {
         close_buttons[i].style.display = 'block';
       }
     } else if (close_buttons[0].style.display == 'block') {
-      element.innerHTML = '✖ Delete countries…';
+      element.innerHTML = 'Delete countries…';
 
       for (let i=0; i<close_buttons.length; i++) {
         close_buttons[i].style.display = 'none';
       }
     }
   } else {
-    element.innerHTML = '✖ Delete countries…';
+    element.innerHTML = 'Delete countries…';
 
   }
 
