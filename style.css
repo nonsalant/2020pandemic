@@ -260,3 +260,11 @@ hr {
 input {
   font-size: 16px;
 }
+
+.close {
+  margin-right: auto;
+}
+
+.add-country {
+  float:right;
+}
