@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap" rel="stylesheet">
-  
+
   <meta name="description" content="Tracks the Coronavirus “inactivation" as a % of the total number of cases COVID-19 cases">
 
   <meta property="og:image" content="https://pbs.twimg.com/media/EUZ6UY_WAAUgdHb?format=png&name=900x900" />
@@ -15,326 +15,326 @@
 
 <body>
 
-<div class="contain">
+  <div class="contain">
 
-  <h1 class="logo">
-    <span id="virus">🦠</span>
-    <span>Live Coronavirus
-      Containment Stats</span>
-  </h1>
-  <h3>
-    Inactivated* virus, worldwide&nbsp;🌎<br>
-  </h3>
+    <h1 class="logo">
+      <span id="virus">🦠</span>
+      <span>Live Coronavirus
+        Containment Stats</span>
+    </h1>
+    <h3>
+      Inactivated* virus, worldwide&nbsp;🌎<br>
+    </h3>
 
-  <h3 id="hero">
-    <div class="percentage-bar" style="width:3em;">
-      &nbsp;&nbsp;…%
+    <h3 id="hero">
+      <div class="percentage-bar" style="width:3em;">
+        &nbsp;&nbsp;…%
+      </div>
+      <small class="percentage-empty">
+        …% 🦠 ACTIVE CASES
+      </small>
+    </h3>
+
+    <p>* The virus becomes <i>inactivated</i>
+      when people who have it die or recover.
+      <br><br>
+    </p>
+
+    <h3>
+      How different countries have dealt with the pandemic so far
+      <small style="font-weight:normal;">
+        (<label for="autorefresh"><u>auto-refresh&nbsp;data</u>?</label>&thinsp;<input onclick="toggle_auto_refresh(this.checked)" type="checkbox" id="autorefresh" name="autorefresh">)
+      </small>
+    </h3>
+
+    <small class="legend">
+      (
+      <span class="green" style="background:#fafffacc;">
+        Recoveries
+      </span>
+      +
+      <span class="deaths">
+        Deaths
+      </span>
+      ) /
+      <span class="red" style="background:#fffafacc;">
+       Tot. Cases
+      </span> =
+      <span class="gray">
+        C. Ratio**
+      </span>
+    </small>
+
+    <div class="country-stats">
+      <div id="Global" style="background:#ccc;" class="block"></div>
+
+      <div id="USA" class="block"></div>
+      <div id="China" class="block"></div>
+
+      <div id="Italy" class="block"></div>
+      <div id="Spain" class="block"></div>
+      <div id="Germany" class="block"></div>
+
+      <div id="Iran" class="block"></div>
+
+      <div id="France" class="block"></div>
+      <div id="UK" class="block"></div>
+      <div id="Switzerland" class="block"></div>
+
+      <div id="S.%20Korea" class="block"></div>
+      <div id="Japan" class="block"></div>
+
+      <div id="Romania" class="block"></div>
+
+      <div id="Bulgaria" class="block"></div>
+      <div id="Moldova" class="block"></div>
     </div>
-    <small class="percentage-empty">
-      …% 🦠 ACTIVE CASES
-    </small>
-  </h3>
-  
-  <p>* The virus becomes <i>inactivated</i>
-    when people who have it die or recover.
-    <br><br>
-  </p>
 
-  <h3>
-    How different countries have dealt with the pandemic so far
-    <small style="font-weight:normal;">
-      (<label for="autorefresh"><u>auto-refresh&nbsp;data</u>?</label>&thinsp;<input onclick="toggle_auto_refresh(this.checked)" type="checkbox" id="autorefresh" name="autorefresh">)
-    </small>
-  </h3>
+    <p style="float:left; width:100%;">
+      <button style="margin-bottom:1em;" onclick="toggle_close_buttons(this)" id="toggle_close_buttons">✖ Delete countries…</button>
+      <span style="margin-bottom:1em;" class="add-country">
+        <label for="country-list-choice"><small>➕</small> <u><b>Add</b></u>:</label>
+        <input placeholder=" country…" list="contry-list" id="country-list-choice" name="country-list-choice" />
+        <datalist id="contry-list">
+          <option value="🇺🇸 USA">
+          <option value="🇮🇹 Italy">
+          <option value="🇪🇸 Spain">
+          <option value="🇩🇪 Germany">
+          <option value="🇫🇷 France">
+          <option value="🇮🇷 Iran">
+          <option value="🇬🇧 UK">
+          <option value="🇨🇭 Switzerland">
+          <option value="🇧🇪 Belgium">
+          <option value="🇳🇱 Netherlands">
+          <option value="🇹🇷 Turkey">
+          <option value="🇰🇷 S. Korea">
+          <option value="🇦🇹 Austria">
+          <option value="🇨🇦 Canada">
+          <option value="🇵🇹 Portugal">
+          <option value="🇮🇱 Israel">
+          <option value="🇳🇴 Norway">
+          <option value="🇧🇷 Brazil">
+          <option value="🇦🇺 Australia">
+          <option value="🇸🇪 Sweden">
+          <option value="🇨🇿 Czechia">
+          <option value="🇮🇪 Ireland">
+          <option value="🇲🇾 Malaysia">
+          <option value="🇩🇰 Denmark">
+          <option value="🇨🇱 Chile">
+          <option value="🇵🇱 Poland">
+          <option value="🇱🇺 Luxembourg">
+          <option value="🇪🇨 Ecuador">
+          <option value="🇷🇴 Romania">
+          <option value="🇯🇵 Japan">
+          <option value="🇷🇺 Russia">
+          <option value="🇵🇰 Pakistan">
+          <option value="🇵🇭 Philippines">
+          <option value="🇹🇭 Thailand">
+          <option value="🇸🇦 Saudi Arabia">
+          <option value="🇮🇩 Indonesia">
+          <option value="🇫🇮 Finland">
+          <option value="🇿🇦 South Africa">
+          <option value="🇮🇳 India">
+          <option value="🇬🇷 Greece">
+          <option value="🇮🇸 Iceland">
+          <option value="🇲🇽 Mexico">
+          <option value="🇵🇦 Panama">
+          <option value="🇵🇪 Peru">
+          <option value="🇩🇴 Dominican Republic">
+          <option value="🇸🇬 Singapore">
+          <option value="🇦🇷 Argentina">
+          <option value="🇨🇴 Colombia">
+          <option value="🇭🇷 Croatia">
+          <option value="🇷🇸 Serbia">
+          <option value="🇸🇮 Slovenia">
+          <option value="🇪🇪 Estonia">
+          <option value="🚢 Diamond Princess">
+          <option value="🇶🇦 Qatar">
+          <option value="🇪🇬 Egypt">
+          <option value="🇭🇰 Hong Kong">
+          <option value="🇮🇶 Iraq">
+          <option value="🇦🇪 UAE">
+          <option value="🇳🇿 New Zealand">
+          <option value="🇩🇿 Algeria">
+          <option value="🇲🇦 Morocco">
+          <option value="🇧🇭 Bahrain">
+          <option value="🇱🇹 Lithuania">
+          <option value="🇦🇲 Armenia">
+          <option value="🇺🇦 Ukraine">
+          <option value="🇭🇺 Hungary">
+          <option value="🇱🇧 Lebanon">
+          <option value="🇱🇻 Latvia">
+          <option value="🇧🇬 Bulgaria">
+          <option value="🇧🇦 Bosnia and Herzegovina">
+          <option value="🇸🇰 Slovakia">
+          <option value="🇦🇩 Andorra">
+          <option value="🇨🇷 Costa Rica">
+          <option value="🇹🇳 Tunisia">
+          <option value="🇺🇾 Uruguay">
+          <option value="🇹🇼 Taiwan">
+          <option value="🇰🇿 Kazakhstan">
+          <option value="🇲🇩 Moldova">
+          <option value="🇲🇰 North Macedonia">
+          <option value="🇦🇿 Azerbaijan">
+          <option value="🇯🇴 Jordan">
+          <option value="🇰🇼 Kuwait">
+          <option value="🇧🇫 Burkina Faso">
+          <option value="🇸🇲 San Marino">
+          <option value="🇨🇾 Cyprus">
+          <option value="🇷🇪 Réunion">
+          <option value="🇦🇱 Albania">
+          <option value="🇻🇳 Vietnam">
+          <option value="🇴🇲 Oman">
+          <option value="🇦🇫 Afghanistan">
+          <option value="🇨🇺 Cuba">
+          <option value="🇫🇴 Faeroe Islands">
+          <option value="🇨🇮 Ivory Coast">
+          <option value="🇸🇳 Senegal">
+          <option value="🇲🇹 Malta">
+          <option value="🇬🇭 Ghana">
+          <option value="🇧🇾 Belarus">
+          <option value="🇺🇿 Uzbekistan">
+          <option value="&nbsp;&nbsp;&nbsp;&thinsp; Channel Islands">
+          <option value="🇨🇲 Cameroon">
+          <option value="🇭🇳 Honduras">
+          <option value="🇻🇪 Venezuela">
+          <option value="🇲🇺 Mauritius">
+          <option value="🇧🇳 Brunei">
+          <option value="🇱🇰 Sri Lanka">
+          <option value="🇵🇸 Palestine">
+          <option value="🇳🇬 Nigeria">
+          <option value="🇰🇭 Cambodia">
+          <option value="🇬🇵 Guadeloupe">
+          <option value="🇬🇪 Georgia">
+          <option value="🇧🇴 Bolivia">
+          <option value="🇰🇬 Kyrgyzstan">
+          <option value="🇲🇶 Martinique">
+          <option value="🇲🇪 Montenegro">
+          <option value="🇹🇹 Trinidad and Tobago">
+          <option value="🇾🇹 Mayotte">
+          <option value="🇨🇩 DRC">
+          <option value="🇷🇼 Rwanda">
+          <option value="🇬🇮 Gibraltar">
+          <option value="🇵🇾 Paraguay">
+          <option value="🇱🇮 Liechtenstein">
+          <option value="🇰🇪 Kenya">
+          <option value="🇦🇼 Aruba">
+          <option value="🇧🇩 Bangladesh">
+          <option value="🇲🇨 Monaco">
+          <option value="🇮🇲 Isle of Man">
+          <option value="🇬🇫 French Guiana">
+          <option value="🇲🇬 Madagascar">
+          <option value="🇲🇴 Macao">
+          <option value="🇬🇹 Guatemala">
+          <option value="🇯🇲 Jamaica">
+          <option value="🇵🇫 French Polynesia">
+          <option value="🇿🇲 Zambia">
+          <option value="🇧🇧 Barbados">
+          <option value="🇺🇬 Uganda">
+          <option value="🇹🇬 Togo">
+          <option value="🇸🇻 El Salvador">
+          <option value="🇲🇱 Mali">
+          <option value="🇪🇹 Ethiopia">
+          <option value="🇳🇪 Niger">
+          <option value="🇧🇲 Bermuda">
+          <option value="🇬🇳 Guinea">
+          <option value="🇨🇬 Congo">
+          <option value="🇹🇿 Tanzania">
+          <option value="🇩🇯 Djibouti">
+          <option value="🇲🇻 Maldives">
+          <option value="🇲🇫 Saint Martin">
+          <option value="🇭🇹 Haiti">
+          <option value="🇳🇨 New Caledonia">
+          <option value="🇧🇸 Bahamas">
+          <option value="🇲🇲 Myanmar">
+          <option value="🇰🇾 Cayman Islands">
+          <option value="🇬🇶 Equatorial Guinea">
+          <option value="🇪🇷 Eritrea">
+          <option value="🇲🇳 Mongolia">
+          <option value="🇨🇼 Curaçao">
+          <option value="🇩🇲 Dominica">
+          <option value="🇳🇦 Namibia">
+          <option value="🇬🇱 Greenland">
+          <option value="🇸🇾 Syria">
+          <option value="🇬🇩 Grenada">
+          <option value="🇱🇨 Saint Lucia">
+          <option value="🇸🇿 Eswatini">
+          <option value="🇬🇾 Guyana">
+          <option value="🇬🇼 Guinea-Bissau">
+          <option value="🇱🇦 Laos">
+          <option value="🇱🇾 Libya">
+          <option value="🇲🇿 Mozambique">
+          <option value="🇸🇨 Seychelles">
+          <option value="🇸🇷 Suriname">
+          <option value="🇦🇴 Angola">
+          <option value="🇬🇦 Gabon">
+          <option value="🇿🇼 Zimbabwe">
+          <option value="🇦🇬 Antigua and Barbuda">
+          <option value="🇰🇳 Saint Kitts and Nevis">
+          <option value="🇸🇩 Sudan">
+          <option value="🇨🇻 Cabo Verde">
+          <option value="🇧🇯 Benin">
+          <option value="🇻🇦 Vatican City">
+          <option value="🇧🇱 St. Barth">
+          <option value="🇸🇽 Sint Maarten">
+          <option value="🇳🇵 Nepal">
+          <option value="🇹🇩 Chad">
+          <option value="🇫🇯 Fiji">
+          <option value="🇲🇷 Mauritania">
+          <option value="🇲🇸 Montserrat">
+          <option value="🇹🇨 Turks and Caicos">
+          <option value="🇬🇲 Gambia">
+          <option value="🇳🇮 Nicaragua">
+          <option value="🇧🇹 Bhutan">
+          <option value="🇧🇿 Belize">
+          <option value="🇧🇼 Botswana">
+          <option value="🇨🇫 CAR">
+          <option value="🇱🇷 Liberia">
+          <option value="🇸🇴 Somalia">
+          <option value="🚢 MS Zaandam">
+          <option value="🇦🇮 Anguilla">
+          <option value="🇻🇬 British Virgin Islands">
+          <option value="🇵🇬 Papua New Guinea">
+          <option value="🇻🇨 St. Vincent Grenadines">
+          <option value="🇹🇱 Timor-Leste">
+          <option value="🇨🇳 China">
+        </datalist>
+      </span>
+    </p>
 
-  <small class="legend">
-    (
-    <span class="green" style="background:#fafffacc;">
-      Recoveries
-    </span>
-    +
-    <span class="deaths">
-      Deaths
-    </span>
-    ) /
-    <span class="red" style="background:#fffafacc;">
-     Tot. Cases
-    </span> =
-    <span class="gray">
-      C. Ratio**
-    </span>
-  </small>
+    <p style="clear:both;">
+      ** The <i>Containment Ratio</i> (C. RATIO)
+      represents the proportion
+      of cases where the virus has become unable to spread because the person carrying it has either died or recovered.
+    </p>
 
-  <div class="country-stats">
-    <div id="Global" style="background:#ccc;" class="block"></div>
+    <hr>
 
-    <div id="USA" class="block"></div>
-    <div id="China" class="block"></div>
+    <h3>
+      Other links:
+    </h3>
+    <ul>
+      <li>
+        <b><a href="https://aatishb.com/covidtrends/">Covid Trends</a>:</b> Trajectory of COVID-19 Confirmed Cases
+        [interactive charts]
+        (or watch the 7 min. <a href="https://youtu.be/54XLXg4fYsc">video</a>
+        first)
+      </li>
+      <li>
+        <b><a href="https://youtu.be/gxAaO2rsdIs">Simulating an Epidemic</a>:</b>
+        Experiments with toy SRI models [23 min. Youtube video.]
+      </li>
+    </ul>
 
-    <div id="Italy" class="block"></div>
-    <div id="Spain" class="block"></div>
-    <div id="Germany" class="block"></div>
+  </div><!-- /.contain -->
 
-    <div id="Iran" class="block"></div>
 
-    <div id="France" class="block"></div>
-    <div id="UK" class="block"></div>
-    <div id="Switzerland" class="block"></div>
-
-    <div id="S.%20Korea" class="block"></div>
-    <div id="Japan" class="block"></div>
-
-    <div id="Romania" class="block"></div>
-
-    <div id="Bulgaria" class="block"></div>
-    <div id="Moldova" class="block"></div>
-  </div>
-  
-  <p style="float:left; width:100%;">
-    <button style="margin-bottom:1em;" onclick="toggle_close_buttons(this)" id="toggle_close_buttons">✖ Delete countries…</button>
-    <span style="margin-bottom:1em;" class="add-country">
-      <label for="country-list-choice"><small>➕</small> <u><b>Add</b></u>:</label>
-      <input placeholder=" country…" list="contry-list" id="country-list-choice" name="country-list-choice" />
-      <datalist id="contry-list">
-        <option value="🇺🇸 USA">
-        <option value="🇮🇹 Italy"> 
-        <option value="🇪🇸 Spain">
-        <option value="🇩🇪 Germany">
-        <option value="🇫🇷 France">
-        <option value="🇮🇷 Iran">
-        <option value="🇬🇧 UK">
-        <option value="🇨🇭 Switzerland">
-        <option value="🇧🇪 Belgium">
-        <option value="🇳🇱 Netherlands">
-        <option value="🇹🇷 Turkey">
-        <option value="🇰🇷 S. Korea">
-        <option value="🇦🇹 Austria">
-        <option value="🇨🇦 Canada">
-        <option value="🇵🇹 Portugal">
-        <option value="🇮🇱 Israel">
-        <option value="🇳🇴 Norway">
-        <option value="🇧🇷 Brazil">
-        <option value="🇦🇺 Australia">
-        <option value="🇸🇪 Sweden">
-        <option value="🇨🇿 Czechia">
-        <option value="🇮🇪 Ireland">
-        <option value="🇲🇾 Malaysia">
-        <option value="🇩🇰 Denmark">
-        <option value="🇨🇱 Chile">
-        <option value="🇵🇱 Poland">
-        <option value="🇱🇺 Luxembourg">
-        <option value="🇪🇨 Ecuador">
-        <option value="🇷🇴 Romania">
-        <option value="🇯🇵 Japan">
-        <option value="🇷🇺 Russia">
-        <option value="🇵🇰 Pakistan">
-        <option value="🇵🇭 Philippines">
-        <option value="🇹🇭 Thailand">
-        <option value="🇸🇦 Saudi Arabia">
-        <option value="🇮🇩 Indonesia">
-        <option value="🇫🇮 Finland">
-        <option value="🇿🇦 South Africa">
-        <option value="🇮🇳 India">
-        <option value="🇬🇷 Greece">
-        <option value="🇮🇸 Iceland">
-        <option value="🇲🇽 Mexico">
-        <option value="🇵🇦 Panama">
-        <option value="🇵🇪 Peru">
-        <option value="🇩🇴 Dominican Republic">
-        <option value="🇸🇬 Singapore">
-        <option value="🇦🇷 Argentina">
-        <option value="🇨🇴 Colombia">
-        <option value="🇭🇷 Croatia">
-        <option value="🇷🇸 Serbia">
-        <option value="🇸🇮 Slovenia">
-        <option value="🇪🇪 Estonia">
-        <option value="🚢 Diamond Princess">
-        <option value="🇶🇦 Qatar">
-        <option value="🇪🇬 Egypt">
-        <option value="🇭🇰 Hong Kong">
-        <option value="🇮🇶 Iraq">
-        <option value="🇦🇪 UAE">
-        <option value="🇳🇿 New Zealand">
-        <option value="🇩🇿 Algeria">
-        <option value="🇲🇦 Morocco">
-        <option value="🇧🇭 Bahrain">
-        <option value="🇱🇹 Lithuania">
-        <option value="🇦🇲 Armenia">
-        <option value="🇺🇦 Ukraine">
-        <option value="🇭🇺 Hungary">
-        <option value="🇱🇧 Lebanon">
-        <option value="🇱🇻 Latvia">
-        <option value="🇧🇬 Bulgaria">
-        <option value="🇧🇦 Bosnia and Herzegovina">
-        <option value="🇸🇰 Slovakia">
-        <option value="🇦🇩 Andorra">
-        <option value="🇨🇷 Costa Rica">
-        <option value="🇹🇳 Tunisia">
-        <option value="🇺🇾 Uruguay">
-        <option value="🇹🇼 Taiwan">
-        <option value="🇰🇿 Kazakhstan">
-        <option value="🇲🇩 Moldova">
-        <option value="🇲🇰 North Macedonia">
-        <option value="🇦🇿 Azerbaijan">
-        <option value="🇯🇴 Jordan">
-        <option value="🇰🇼 Kuwait">
-        <option value="🇧🇫 Burkina Faso">
-        <option value="🇸🇲 San Marino">
-        <option value="🇨🇾 Cyprus">
-        <option value="🇷🇪 Réunion">
-        <option value="🇦🇱 Albania">
-        <option value="🇻🇳 Vietnam">
-        <option value="🇴🇲 Oman">
-        <option value="🇦🇫 Afghanistan">
-        <option value="🇨🇺 Cuba">
-        <option value="🇫🇴 Faeroe Islands">
-        <option value="🇨🇮 Ivory Coast">
-        <option value="🇸🇳 Senegal">
-        <option value="🇲🇹 Malta">
-        <option value="🇬🇭 Ghana">
-        <option value="🇧🇾 Belarus">
-        <option value="🇺🇿 Uzbekistan">
-        <option value="&nbsp;&nbsp;&nbsp;&thinsp; Channel Islands">
-        <option value="🇨🇲 Cameroon">
-        <option value="🇭🇳 Honduras">
-        <option value="🇻🇪 Venezuela">
-        <option value="🇲🇺 Mauritius">
-        <option value="🇧🇳 Brunei">
-        <option value="🇱🇰 Sri Lanka">
-        <option value="🇵🇸 Palestine">
-        <option value="🇳🇬 Nigeria">
-        <option value="🇰🇭 Cambodia">
-        <option value="🇬🇵 Guadeloupe">
-        <option value="🇬🇪 Georgia">
-        <option value="🇧🇴 Bolivia">
-        <option value="🇰🇬 Kyrgyzstan">
-        <option value="🇲🇶 Martinique">
-        <option value="🇲🇪 Montenegro">
-        <option value="🇹🇹 Trinidad and Tobago">
-        <option value="🇾🇹 Mayotte">
-        <option value="🇨🇩 DRC">
-        <option value="🇷🇼 Rwanda">
-        <option value="🇬🇮 Gibraltar">
-        <option value="🇵🇾 Paraguay">
-        <option value="🇱🇮 Liechtenstein">
-        <option value="🇰🇪 Kenya">
-        <option value="🇦🇼 Aruba">
-        <option value="🇧🇩 Bangladesh">
-        <option value="🇲🇨 Monaco">
-        <option value="🇮🇲 Isle of Man">
-        <option value="🇬🇫 French Guiana">
-        <option value="🇲🇬 Madagascar">
-        <option value="🇲🇴 Macao">
-        <option value="🇬🇹 Guatemala">
-        <option value="🇯🇲 Jamaica">
-        <option value="🇵🇫 French Polynesia">
-        <option value="🇿🇲 Zambia">
-        <option value="🇧🇧 Barbados">
-        <option value="🇺🇬 Uganda">
-        <option value="🇹🇬 Togo">
-        <option value="🇸🇻 El Salvador">
-        <option value="🇲🇱 Mali">
-        <option value="🇪🇹 Ethiopia">
-        <option value="🇳🇪 Niger">
-        <option value="🇧🇲 Bermuda">
-        <option value="🇬🇳 Guinea">
-        <option value="🇨🇬 Congo">
-        <option value="🇹🇿 Tanzania">
-        <option value="🇩🇯 Djibouti">
-        <option value="🇲🇻 Maldives">
-        <option value="🇲🇫 Saint Martin">
-        <option value="🇭🇹 Haiti">
-        <option value="🇳🇨 New Caledonia">
-        <option value="🇧🇸 Bahamas">
-        <option value="🇲🇲 Myanmar">
-        <option value="🇰🇾 Cayman Islands">
-        <option value="🇬🇶 Equatorial Guinea">
-        <option value="🇪🇷 Eritrea">
-        <option value="🇲🇳 Mongolia">
-        <option value="🇨🇼 Curaçao">
-        <option value="🇩🇲 Dominica">
-        <option value="🇳🇦 Namibia">
-        <option value="🇬🇱 Greenland">
-        <option value="🇸🇾 Syria">
-        <option value="🇬🇩 Grenada">
-        <option value="🇱🇨 Saint Lucia">
-        <option value="🇸🇿 Eswatini">
-        <option value="🇬🇾 Guyana">
-        <option value="🇬🇼 Guinea-Bissau">
-        <option value="🇱🇦 Laos">
-        <option value="🇱🇾 Libya">
-        <option value="🇲🇿 Mozambique">
-        <option value="🇸🇨 Seychelles">
-        <option value="🇸🇷 Suriname">
-        <option value="🇦🇴 Angola">
-        <option value="🇬🇦 Gabon">
-        <option value="🇿🇼 Zimbabwe">
-        <option value="🇦🇬 Antigua and Barbuda">
-        <option value="🇰🇳 Saint Kitts and Nevis">
-        <option value="🇸🇩 Sudan">
-        <option value="🇨🇻 Cabo Verde">
-        <option value="🇧🇯 Benin">
-        <option value="🇻🇦 Vatican City">
-        <option value="🇧🇱 St. Barth">
-        <option value="🇸🇽 Sint Maarten">
-        <option value="🇳🇵 Nepal">
-        <option value="🇹🇩 Chad">
-        <option value="🇫🇯 Fiji">
-        <option value="🇲🇷 Mauritania">
-        <option value="🇲🇸 Montserrat">
-        <option value="🇹🇨 Turks and Caicos">
-        <option value="🇬🇲 Gambia">
-        <option value="🇳🇮 Nicaragua">
-        <option value="🇧🇹 Bhutan">
-        <option value="🇧🇿 Belize">
-        <option value="🇧🇼 Botswana">
-        <option value="🇨🇫 CAR">
-        <option value="🇱🇷 Liberia">
-        <option value="🇸🇴 Somalia">
-        <option value="🚢 MS Zaandam">
-        <option value="🇦🇮 Anguilla">
-        <option value="🇻🇬 British Virgin Islands">
-        <option value="🇵🇬 Papua New Guinea">
-        <option value="🇻🇨 St. Vincent Grenadines">
-        <option value="🇹🇱 Timor-Leste">
-        <option value="🇨🇳 China">
-      </datalist>
-    </span>
-  </p>
-
-  <p style="clear:both;">
-    ** The <i>Containment Ratio</i> (C. RATIO)
-    represents the proportion
-    of cases where the virus has become unable to spread because the person carrying it has either died or recovered.
-  </p>
-
-  <hr>
-
-  <h3>
-    Other links:
-  </h3>
-  <ul>
-    <li>
-      <b><a href="https://aatishb.com/covidtrends/">Covid Trends</a>:</b> Trajectory of COVID-19 Confirmed Cases
-      [interactive charts]
-      (or watch the 7 min. <a href="https://youtu.be/54XLXg4fYsc">video</a>
-      first)
-    </li>
-    <li>
-      <b><a href="https://youtu.be/gxAaO2rsdIs">Simulating an Epidemic</a>:</b>
-      Experiments with toy SRI models [23 min. Youtube video.]
-    </li>
-  </ul>
-
-</div><!-- /.contain -->
-
-  
 <footer id="colophon" style="text-align:center; margin-bottom:3em;">
-      <a href="https://twitter.com/2020pandemic1/"> 
+      <a href="https://twitter.com/2020pandemic1/">
         <span style="opacity:.75;">
         <svg aria-hidden="true" style="max-width:1em; vertical-align: middle;" data-prefix="fab" data-icon="twitter" class="svg-inline--fa fa-twitter fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path>
-        </svg> 
-        </span> 
+        </svg>
+        </span>
         <b>Coronavirus Containment Stats</b>
      </a>
      <br><br>
@@ -350,7 +350,7 @@
 
 <script src="script.js">
 </script>
-  
+
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-1028654-6"></script>
 <script>
