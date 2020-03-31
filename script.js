@@ -1,3 +1,5 @@
+localStorageInit();
+
 render_stuff();
 //let auto_refresh = setInterval(render_stuff, 3000);
 
@@ -12,7 +14,7 @@ function toggle_auto_refresh(checked) {
     document.querySelector('.legend').style.background='#ffff1122';
   } else {
     clearInterval(auto_refresh);
-    document.querySelector('.legend').style.background='#cccccc44;';
+    document.querySelector('.legend').style.background='#cccccc44';
   }
 }
 
@@ -84,9 +86,7 @@ function render(id) {
       let recovered = Number(data.recovered.toFixed(0));
       let deaths = Number(data.deaths.toFixed(0));
       let cases = Number(data.cases.toFixed(0));
-
       let cr = ((recovered + deaths) / cases).toFixed(2);
-
       function color_change(cr) {
         let colorClass = "gray";
         if (Number(cr) < 0.1) {
@@ -99,7 +99,7 @@ function render(id) {
       }
 
       document.getElementById(id).innerHTML = `
-        <button class="close" onclick="this.parentNode.remove()" style="display:none;">
+        <button class="close" onclick="remove_country(this)" style="display:none;">
           ❌
         </button>
         <a href="${url}" title="View raw data">
@@ -122,6 +122,145 @@ function render(id) {
     });
 }
 
+
+
+
+function toggle_close_buttons(element) {
+  let close_buttons = document.querySelectorAll('.close');
+
+  if (typeof(close_buttons[0]) != 'undefined' && close_buttons != null) {
+    if (close_buttons[0].style.display == 'none') {
+
+      if(document.getElementById('autorefresh').checked) {
+        document.getElementById('autorefresh').checked=false;
+        toggle_auto_refresh(false);
+      }
+
+      element.innerHTML = '&nbsp;&nbsp;&nbsp;✔ Done deleting.&nbsp;&nbsp;&nbsp;';
+      for (let i=0; i<close_buttons.length; i++) {
+        close_buttons[i].style.display = 'block';
+      }
+    } else if (close_buttons[0].style.display == 'block') {
+      element.innerHTML = '✖ Delete countries…';
+
+      for (let i=0; i<close_buttons.length; i++) {
+        close_buttons[i].style.display = 'none';
+      }
+    }
+  } else {
+    element.innerHTML = '✖ Delete countries…';
+
+  }
+
+}
+
+
+
+document.querySelector('#country-list-choice').addEventListener('change', (event) => {
+  let new_country = document.getElementById('country-list-choice').value;
+  new_country = new_country.split(' ');
+  new_country.shift();
+  new_country = new_country.join(' ');
+  if (new_country && !document.getElementById(escape(new_country)) ) {
+    console.log(new_country +" added.");
+    add_country(new_country);
+  } else if ( document.getElementById(escape(new_country)) ) {
+    alert(new_country+' is already shown.')
+  }
+  document.getElementById('country-list-choice').value = '';
+});
+
+// //country_list();
+// function country_list() {
+//   let url = "https://coronavirus-19-api.herokuapp.com/countries/";
+//   fetch(url)
+//     .then((response) => {
+//     return response.json();
+//   })
+//     .then((data) => {
+//     let str = '';
+//     for (let i=0; i<data.length; i++) {
+//       str+=flag_emoji(escape(data[i].country))+' '+data[i].country+',';
+//     }
+//     console.log(str);
+//     //"🇺🇸 USA,🇮🇹 Italy,🇪🇸 Spain,🇩🇪 Germany,🇫🇷 France,🇮🇷 Iran,🇬🇧 UK,🇨🇭 Switzerland,🇧🇪 Belgium,🇳🇱 Netherlands,🇹🇷 Turkey,🇰🇷 S. Korea,🇦🇹 Austria,🇨🇦 Canada,🇵🇹 Portugal,🇮🇱 Israel,🇧🇷 Brazil,🇳🇴 Norway,🇦🇺 Australia,🇸🇪 Sweden,🇨🇿 Czechia,🇮🇪 Ireland,🇲🇾 Malaysia,🇩🇰 Denmark,🇨🇱 Chile,🇵🇱 Poland,🇱🇺 Luxembourg,🇪🇨 Ecuador,🇷🇴 Romania,🇯🇵 Japan,🇷🇺 Russia,🇵🇰 Pakistan,🇵🇭 Philippines,🇹🇭 Thailand,🇸🇦 Saudi Arabia,🇮🇩 Indonesia,🇫🇮 Finland,🇿🇦 South Africa,🇮🇳 India,🇬🇷 Greece,🇮🇸 Iceland,🇲🇽 Mexico,🇵🇦 Panama,🇵🇪 Peru,🇩🇴 Dominican Republic,🇸🇬 Singapore,🇦🇷 Argentina,🇨🇴 Colombia,🇭🇷 Croatia,🇷🇸 Serbia,🇸🇮 Slovenia,🇪🇪 Estonia,🚢 Diamond Princess,🇶🇦 Qatar,🇪🇬 Egypt,🇭🇰 Hong Kong,🇮🇶 Iraq,🇦🇪 UAE,🇳🇿 New Zealand,🇩🇿 Algeria,🇲🇦 Morocco,🇧🇭 Bahrain,🇱🇹 Lithuania,🇦🇲 Armenia,🇺🇦 Ukraine,🇭🇺 Hungary,🇱🇧 Lebanon,🇱🇻 Latvia,🇧🇬 Bulgaria,🇧🇦 Bosnia and Herzegovina,🇸🇰 Slovakia,🇦🇩 Andorra,🇨🇷 Costa Rica,🇹🇳 Tunisia,🇺🇾 Uruguay,🇹🇼 Taiwan,🇰🇿 Kazakhstan,🇲🇩 Moldova,🇲🇰 North Macedonia,🇦🇿 Azerbaijan,🇯🇴 Jordan,🇰🇼 Kuwait,🇧🇫 Burkina Faso,🇸🇲 San Marino,🇨🇾 Cyprus,&nbsp;&nbsp;&nbsp;&thinsp; Réunion,🇦🇱 Albania,🇻🇳 Vietnam,🇴🇲 Oman,🇦🇫 Afghanistan,🇨🇺 Cuba,🇫🇴 Faeroe Islands,🇨🇮 Ivory Coast,🇸🇳 Senegal,🇲🇹 Malta,🇬🇭 Ghana,🇧🇾 Belarus,🇺🇿 Uzbekistan,&nbsp;&nbsp;&nbsp;&thinsp; Channel Islands,🇨🇲 Cameroon,🇭🇳 Honduras,🇻🇪 Venezuela,🇲🇺 Mauritius,🇧🇳 Brunei,🇱🇰 Sri Lanka,🇵🇸 Palestine,🇳🇬 Nigeria,🇰🇭 Cambodia,🇬🇵 Guadeloupe,🇬🇪 Georgia,🇧🇴 Bolivia,🇰🇬 Kyrgyzstan,🇲🇶 Martinique,🇲🇪 Montenegro,&nbsp;&nbsp;&nbsp;&thinsp; Trinidad and Tobago,🇾🇹 Mayotte,🇨🇩 DRC,🇷🇼 Rwanda,🇬🇮 Gibraltar,🇵🇾 Paraguay,🇱🇮 Liechtenstein,🇰🇪 Kenya,🇦🇼 Aruba,🇧🇩 Bangladesh,🇲🇨 Monaco,🇮🇲 Isle of Man,🇬🇫 French Guiana,🇲🇬 Madagascar,🇲🇴 Macao,🇬🇹 Guatemala,🇯🇲 Jamaica,🇵🇫 French Polynesia,🇿🇲 Zambia,🇧🇧 Barbados,🇺🇬 Uganda,🇹🇬 Togo,🇸🇻 El Salvador,🇲🇱 Mali,🇪🇹 Ethiopia,🇳🇪 Niger,🇧🇲 Bermuda,🇬🇳 Guinea,🇨🇬 Congo,🇹🇿 Tanzania,🇩🇯 Djibouti,🇲🇻 Maldives,🇲🇫 Saint Martin,🇭🇹 Haiti,🇳🇨 New Caledonia,🇧🇸 Bahamas,🇲🇲 Myanmar,🇰🇾 Cayman Islands,🇬🇶 Equatorial Guinea,🇪🇷 Eritrea,🇲🇳 Mongolia,&nbsp;&nbsp;&nbsp;&thinsp; Curaçao,🇩🇲 Dominica,🇳🇦 Namibia,🇬🇱 Greenland,🇸🇾 Syria,🇬🇩 Grenada,🇱🇨 Saint Lucia,🇸🇿 Eswatini,🇬🇾 Guyana,🇬🇼 Guinea-Bissau,🇱🇦 Laos,🇱🇾 Libya,🇲🇿 Mozambique,🇸🇨 Seychelles,🇸🇷 Suriname,🇦🇴 Angola,🇬🇦 Gabon,🇿🇼 Zimbabwe,🇦🇬 Antigua and Barbuda,🇰🇳 Saint Kitts and Nevis,🇸🇩 Sudan,🇨🇻 Cabo Verde,🇧🇯 Benin,🇻🇦 Vatican City,🇧🇱 St. Barth,🇸🇽 Sint Maarten,🇳🇵 Nepal,🇹🇩 Chad,🇫🇯 Fiji,🇲🇷 Mauritania,🇲🇸 Montserrat,🇹🇨 Turks and Caicos,🇬🇲 Gambia,🇳🇮 Nicaragua,🇧🇹 Bhutan,🇧🇿 Belize,🇧🇼 Botswana,🇨🇫 CAR,🇱🇷 Liberia,🇸🇴 Somalia,🚢 MS Zaandam,🇦🇮 Anguilla,🇻🇬 British Virgin Islands,🇵🇬 Papua New Guinea,🇻🇨 St. Vincent Grenadines,🇹🇱 Timor-Leste,🇨🇳 China,"
+//   });
+// }
+
+
+// localStorage
+
+function localStorageInit() {
+  let pandemicSavedCountries = localStorage.getItem('pandemicSavedCountries');
+  if (!pandemicSavedCountries || pandemicSavedCountries === '{}') {
+    let aaa = document.querySelectorAll('.country-stats .block');
+    let aa = '';
+    for (let i=0; i<aaa.length; i++) {
+      aa += aaa[i].id;
+      if (i<(aaa.length-1)) {
+          aa+=',';
+      }
+    }
+    localStorage.setItem('pandemicSavedCountries', aa);
+  } else {
+    let bbb = pandemicSavedCountries.split(',');
+    let bb='';
+    for (let i=0; i<bbb.length; i++) {
+      bb+=`
+      <div id="${bbb[i]}" class="block"></div>
+      `;
+    }
+    document.querySelector('.country-stats').innerHTML = bb;
+  }
+}
+
+function remove_country(el) {
+  el.parentNode.remove();
+  console.log(unescape(el.parentNode.id)+' removed.')
+
+  let pandemicSavedCountries = localStorage.getItem('pandemicSavedCountries');
+  let bbb = pandemicSavedCountries.split(',');
+  let bb='';
+  for (let i=0; i<bbb.length; i++) {
+    if(bbb[i]==el.parentNode.id) {
+        bbb.splice(i, 1);
+       }
+  }
+  localStorage.setItem( 'pandemicSavedCountries', bbb.join() );
+}
+
+// add_country('Diamond Princess');
+function add_country(country) {
+  document.querySelector('.country-stats').innerHTML += `
+    <div id="${escape(country)}" class="block"></div>
+  `;
+  render(escape(country));
+
+  let pandemicSavedCountries = localStorage.getItem('pandemicSavedCountries');
+  let bbb = pandemicSavedCountries.split(',');
+  bbb.push(escape(country));
+  localStorage.setItem( 'pandemicSavedCountries', bbb.join() );
+  //console.log(bbb.join());
+}
+
+
+//https://medium.com/@mhagemann/the-ultimate-way-to-slugify-a-url-string-in-javascript-b8e4a0d849e1
+function slugify(string) {
+  const a = 'àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;'
+  const b = 'aaaaaaaaaacccddeeeeeeeegghiiiiiilmnnnnooooooooprrsssssttuuuuuuuuuwxyyzzz------'
+  const p = new RegExp(a.split('').join('|'), 'g')
+
+  return string.toString().toLowerCase()
+    .replace(/\s+/g, '-') // Replace spaces with -
+    .replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
+    .replace(/&/g, '-and-') // Replace & with 'and'
+    .replace(/[^\w\-]+/g, '') // Remove all non-word characters
+    .replace(/\-\-+/g, '-') // Replace multiple - with single -
+    .replace(/^-+/, '') // Trim - from start of text
+    .replace(/-+$/, '') // Trim - from end of text
+}
+
+// flag_emoji function by Stefan Matei
 function flag_emoji(country) {
   switch (country) {
     case "Romania":
@@ -536,89 +675,4 @@ function flag_emoji(country) {
       return "🇧🇼";
   }
   return "&nbsp;&nbsp;&nbsp;&thinsp;";
-}
-
-function toggle_close_buttons(element) {
-  let close_buttons = document.querySelectorAll('.close');
-
-  if (typeof(close_buttons[0]) != 'undefined' && close_buttons != null) {
-    if (close_buttons[0].style.display == 'none') {
-
-      if(document.getElementById('autorefresh').checked) {
-        document.getElementById('autorefresh').checked=false;
-        toggle_auto_refresh(false);
-      }
-
-      element.innerHTML = '&nbsp;&nbsp;&nbsp;✔ Done deleting.&nbsp;&nbsp;&nbsp;';
-      for (let i=0; i<close_buttons.length; i++) {
-        close_buttons[i].style.display = 'block';
-      }
-    } else if (close_buttons[0].style.display == 'block') {
-      element.innerHTML = '✖ Delete countries…';
-
-      for (let i=0; i<close_buttons.length; i++) {
-        close_buttons[i].style.display = 'none';
-      }
-    }
-  } else {
-    element.innerHTML = '✖ Delete countries…';
-
-  }
-
-}
-
-// add_country('Diamond Princess');
-function add_country(country) {
-  document.querySelector('.country-stats').innerHTML += `
-    <div id="${escape(country)}" class="block"></div>
-  `;
-  render(escape(country));
-}
-
-document.querySelector('#country-list-choice').addEventListener('change', (event) => {
-  let new_country = document.getElementById('country-list-choice').value;
-  new_country = new_country.split(' ');
-  new_country.shift();
-  new_country = new_country.join(' ');
-  if (new_country && !document.getElementById(escape(new_country)) ) {
-    console.log(new_country +" added.");
-    add_country(new_country);
-  } else if ( document.getElementById(escape(new_country)) ) {
-    alert(new_country+' is already shown.')
-  }
-  document.getElementById('country-list-choice').value = '';
-});
-
-// //country_list();
-// function country_list() {
-//   let url = "https://coronavirus-19-api.herokuapp.com/countries/";
-//   fetch(url)
-//     .then((response) => {
-//     return response.json();
-//   })
-//     .then((data) => {
-//     let str = '';
-//     for (let i=0; i<data.length; i++) {
-//       str+=flag_emoji(escape(data[i].country))+' '+data[i].country+',';
-//     }
-//     console.log(str);
-//     //"🇺🇸 USA,🇮🇹 Italy,🇪🇸 Spain,🇩🇪 Germany,🇫🇷 France,🇮🇷 Iran,🇬🇧 UK,🇨🇭 Switzerland,🇧🇪 Belgium,🇳🇱 Netherlands,🇹🇷 Turkey,🇰🇷 S. Korea,🇦🇹 Austria,🇨🇦 Canada,🇵🇹 Portugal,🇮🇱 Israel,🇧🇷 Brazil,🇳🇴 Norway,🇦🇺 Australia,🇸🇪 Sweden,🇨🇿 Czechia,🇮🇪 Ireland,🇲🇾 Malaysia,🇩🇰 Denmark,🇨🇱 Chile,🇵🇱 Poland,🇱🇺 Luxembourg,🇪🇨 Ecuador,🇷🇴 Romania,🇯🇵 Japan,🇷🇺 Russia,🇵🇰 Pakistan,🇵🇭 Philippines,🇹🇭 Thailand,🇸🇦 Saudi Arabia,🇮🇩 Indonesia,🇫🇮 Finland,🇿🇦 South Africa,🇮🇳 India,🇬🇷 Greece,🇮🇸 Iceland,🇲🇽 Mexico,🇵🇦 Panama,🇵🇪 Peru,🇩🇴 Dominican Republic,🇸🇬 Singapore,🇦🇷 Argentina,🇨🇴 Colombia,🇭🇷 Croatia,🇷🇸 Serbia,🇸🇮 Slovenia,🇪🇪 Estonia,🚢 Diamond Princess,🇶🇦 Qatar,🇪🇬 Egypt,🇭🇰 Hong Kong,🇮🇶 Iraq,🇦🇪 UAE,🇳🇿 New Zealand,🇩🇿 Algeria,🇲🇦 Morocco,🇧🇭 Bahrain,🇱🇹 Lithuania,🇦🇲 Armenia,🇺🇦 Ukraine,🇭🇺 Hungary,🇱🇧 Lebanon,🇱🇻 Latvia,🇧🇬 Bulgaria,🇧🇦 Bosnia and Herzegovina,🇸🇰 Slovakia,🇦🇩 Andorra,🇨🇷 Costa Rica,🇹🇳 Tunisia,🇺🇾 Uruguay,🇹🇼 Taiwan,🇰🇿 Kazakhstan,🇲🇩 Moldova,🇲🇰 North Macedonia,🇦🇿 Azerbaijan,🇯🇴 Jordan,🇰🇼 Kuwait,🇧🇫 Burkina Faso,🇸🇲 San Marino,🇨🇾 Cyprus,&nbsp;&nbsp;&nbsp;&thinsp; Réunion,🇦🇱 Albania,🇻🇳 Vietnam,🇴🇲 Oman,🇦🇫 Afghanistan,🇨🇺 Cuba,🇫🇴 Faeroe Islands,🇨🇮 Ivory Coast,🇸🇳 Senegal,🇲🇹 Malta,🇬🇭 Ghana,🇧🇾 Belarus,🇺🇿 Uzbekistan,&nbsp;&nbsp;&nbsp;&thinsp; Channel Islands,🇨🇲 Cameroon,🇭🇳 Honduras,🇻🇪 Venezuela,🇲🇺 Mauritius,🇧🇳 Brunei,🇱🇰 Sri Lanka,🇵🇸 Palestine,🇳🇬 Nigeria,🇰🇭 Cambodia,🇬🇵 Guadeloupe,🇬🇪 Georgia,🇧🇴 Bolivia,🇰🇬 Kyrgyzstan,🇲🇶 Martinique,🇲🇪 Montenegro,&nbsp;&nbsp;&nbsp;&thinsp; Trinidad and Tobago,🇾🇹 Mayotte,🇨🇩 DRC,🇷🇼 Rwanda,🇬🇮 Gibraltar,🇵🇾 Paraguay,🇱🇮 Liechtenstein,🇰🇪 Kenya,🇦🇼 Aruba,🇧🇩 Bangladesh,🇲🇨 Monaco,🇮🇲 Isle of Man,🇬🇫 French Guiana,🇲🇬 Madagascar,🇲🇴 Macao,🇬🇹 Guatemala,🇯🇲 Jamaica,🇵🇫 French Polynesia,🇿🇲 Zambia,🇧🇧 Barbados,🇺🇬 Uganda,🇹🇬 Togo,🇸🇻 El Salvador,🇲🇱 Mali,🇪🇹 Ethiopia,🇳🇪 Niger,🇧🇲 Bermuda,🇬🇳 Guinea,🇨🇬 Congo,🇹🇿 Tanzania,🇩🇯 Djibouti,🇲🇻 Maldives,🇲🇫 Saint Martin,🇭🇹 Haiti,🇳🇨 New Caledonia,🇧🇸 Bahamas,🇲🇲 Myanmar,🇰🇾 Cayman Islands,🇬🇶 Equatorial Guinea,🇪🇷 Eritrea,🇲🇳 Mongolia,&nbsp;&nbsp;&nbsp;&thinsp; Curaçao,🇩🇲 Dominica,🇳🇦 Namibia,🇬🇱 Greenland,🇸🇾 Syria,🇬🇩 Grenada,🇱🇨 Saint Lucia,🇸🇿 Eswatini,🇬🇾 Guyana,🇬🇼 Guinea-Bissau,🇱🇦 Laos,🇱🇾 Libya,🇲🇿 Mozambique,🇸🇨 Seychelles,🇸🇷 Suriname,🇦🇴 Angola,🇬🇦 Gabon,🇿🇼 Zimbabwe,🇦🇬 Antigua and Barbuda,🇰🇳 Saint Kitts and Nevis,🇸🇩 Sudan,🇨🇻 Cabo Verde,🇧🇯 Benin,🇻🇦 Vatican City,🇧🇱 St. Barth,🇸🇽 Sint Maarten,🇳🇵 Nepal,🇹🇩 Chad,🇫🇯 Fiji,🇲🇷 Mauritania,🇲🇸 Montserrat,🇹🇨 Turks and Caicos,🇬🇲 Gambia,🇳🇮 Nicaragua,🇧🇹 Bhutan,🇧🇿 Belize,🇧🇼 Botswana,🇨🇫 CAR,🇱🇷 Liberia,🇸🇴 Somalia,🚢 MS Zaandam,🇦🇮 Anguilla,🇻🇬 British Virgin Islands,🇵🇬 Papua New Guinea,🇻🇨 St. Vincent Grenadines,🇹🇱 Timor-Leste,🇨🇳 China,"
-//   });
-// }
-
-
-//https://medium.com/@mhagemann/the-ultimate-way-to-slugify-a-url-string-in-javascript-b8e4a0d849e1
-function slugify(string) {
-  const a = 'àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;'
-  const b = 'aaaaaaaaaacccddeeeeeeeegghiiiiiilmnnnnooooooooprrsssssttuuuuuuuuuwxyyzzz------'
-  const p = new RegExp(a.split('').join('|'), 'g')
-
-  return string.toString().toLowerCase()
-    .replace(/\s+/g, '-') // Replace spaces with -
-    .replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
-    .replace(/&/g, '-and-') // Replace & with 'and'
-    .replace(/[^\w\-]+/g, '') // Remove all non-word characters
-    .replace(/\-\-+/g, '-') // Replace multiple - with single -
-    .replace(/^-+/, '') // Trim - from start of text
-    .replace(/-+$/, '') // Trim - from end of text
 }
