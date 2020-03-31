@@ -231,6 +231,10 @@ hr {
       margin-right: -0.5em;
     }
 
+#Global {
+  background:#ccc;
+}
+
 .gray,
 .red,
 .green {
