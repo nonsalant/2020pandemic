@@ -10,7 +10,7 @@
   <meta name="description" content="Tracks the Coronavirus inactivation as a % of the total number of cases COVID-19 cases">
 
   <meta property="og:image" content="https://pbs.twimg.com/media/EUZ6UY_WAAUgdHb?format=png&name=900x900" />
-  <meta property="og:description" content="Tracks the virus “inactivation" as a % of the total number of cases" />
+  <meta property="og:description" content="Tracks the virus inactivation as a % of the total number of cases" />
 </head>
 
 <body>
@@ -91,10 +91,10 @@
       <div id="Moldova" class="block"></div>
     </div>
 
-    <p style="float:left; width:100%;">
-      <button style="margin-bottom:1em;" onclick="toggle_close_buttons(this)" id="toggle_close_buttons">✖ Delete countries…</button>
+    <p style="float:left; width:100%; display:flex; justify-content:space-between;align-items:center;flex-wrap:wrap;">
+      <button class="button" style="margin-bottom:1em;" onclick="toggle_close_buttons(this)" id="toggle_close_buttons">Delete countries…</button>
       <span style="margin-bottom:1em;" class="add-country">
-        <label for="country-list-choice"><small>➕</small> <u><b>Add</b></u>:</label>
+        <label for="country-list-choice"><small>➕</small> <u><b>Add</b></u>:</label>&nbsp;
         <input placeholder=" country…" list="contry-list" id="country-list-choice" name="country-list-choice" />
         <datalist id="contry-list">
           <option value="🇺🇸 USA">
