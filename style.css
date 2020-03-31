@@ -4,6 +4,7 @@
 
 body {
   font-family: Helvetica, sans-serif;
+  background: var(--grain-pattern) repeat scroll center center #b3b3b3;
   background-color: #ffff0007;
   background-blend-mode: soft-light;
   font-family: "Open Sans", sans-serif;
@@ -139,13 +140,15 @@ hr {
   border-radius: 0.25em;
   font-weight: normal;
   background: #ffff0022;
-  border: solid 1px #ddd;
+  border: solid 2px #cccccc88;
   padding: 0 0.2em 0 0;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   text-align: center;
   min-height: 2em;
+
+  background: var(--grain-pattern) repeat scroll center center #ffff1155;
 }
 
 .percentage-bar {
@@ -167,8 +170,10 @@ hr {
   align-items: center;
   flex-direction: column;
   line-height: 0.75em;
-  padding-top: 0.25em;
   height: 2.1em;
+
+  background: var(--grain-pattern) repeat scroll center center #bbbbbb66;
+  box-shadow: 1px 0 0px 1px #bbbbbbdd;
 }
 
 .percentage-empty {
@@ -223,8 +228,9 @@ hr {
   color: #333;
   padding: 0.5em 0.8em 0.5em 0.2em;
 
-  background: var(--grain-pattern);
-  background-color: #cccccc44;
+
+  background: var(--grain-pattern) repeat scroll center center #cccccc44;
+/*   background-color: #cccccc44; */
 }
     .legend span:last-child {
       margin-right: -2.35em;
