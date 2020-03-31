@@ -102,9 +102,9 @@ function render(id) {
         <button class="close" onclick="remove_country(this)" style="display:none;">
           ❌
         </button>
-        <a href="${url}" title="View raw data">
+        <!--<a href="${url}" title="View raw data">-->
           ${unescape(id)}:
-        </a>&nbsp;
+        <!--</a>-->&nbsp;
         (
         <b style="color:green">${recovered}</b>
         +
