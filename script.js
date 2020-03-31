@@ -99,6 +99,9 @@ function render(id) {
       }
 
       document.getElementById(id).innerHTML = `
+        <button class="close" onclick="this.parentNode.remove()" style="display:none;">
+          ❌
+        </button>
         <a href="${url}" title="View raw data">
           ${unescape(id)}:
         </a>&nbsp;
@@ -535,6 +538,27 @@ function flag_emoji(country) {
   return "&nbsp;&nbsp;&nbsp;&thinsp;";
 }
 
+function toggle_close_buttons(element) {
+  let close_buttons = document.querySelectorAll('.close');
+  
+  if (typeof(close_buttons[0]) != 'undefined' && close_buttons != null) {
+    if (close_buttons[0].style.display == 'none') {
+      element.innerHTML = 'Done deleting';
+      for (let i=0; i<close_buttons.length; i++) {
+        close_buttons[i].style.display = 'block';
+      }
+    } else if (close_buttons[0].style.display == 'block') {
+      element.innerHTML = 'Delete Countries…';
+      for (let i=0; i<close_buttons.length; i++) {
+        close_buttons[i].style.display = 'none';
+      } 
+    }
+  } else {
+    element.innerHTML = 'Delete Countries…';
+  } 
+  
+}
+
 // add_country('Diamond Princess');
 function add_country(country) {
   document.querySelector('.country-stats').innerHTML += `
@@ -543,8 +567,8 @@ function add_country(country) {
   render(escape(country));
 }
 
-document.querySelector('#contry-list-choice').addEventListener('change', (event) => {
-  let new_country = document.getElementById('contry-list-choice').value;
+document.querySelector('#country-list-choice').addEventListener('change', (event) => {
+  let new_country = document.getElementById('country-list-choice').value;
   new_country = new_country.split(' ');
   new_country.shift();
   new_country = new_country.join(' '); 
@@ -554,7 +578,7 @@ document.querySelector('#contry-list-choice').addEventListener('change', (event)
   } else if ( document.getElementById(escape(new_country)) ) {
     alert(new_country+' is already shown.')
   }
-  document.getElementById('contry-list-choice').value = '';
+  document.getElementById('country-list-choice').value = '';
 });
 
 // //country_list();
