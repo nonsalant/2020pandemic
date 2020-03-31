@@ -40,7 +40,7 @@ body {
   }
 }
 
-/* 
+/*
 SVG underline
 https://codepen.io/nonsalant/pen/MxoQgR
 */
@@ -223,6 +223,8 @@ hr {
   background: none;
   color: #333;
   padding: 0.5em 0.8em 0.5em 0.2em;
+
+  background: #cccccc44;
 }
     .legend span:last-child {
       margin-right: -2.35em;
@@ -267,9 +269,11 @@ input, button {
     background: none;
     border: none;
     opacity: .75;
+    transition: all .2s ease-out;
 }
 .close:hover {
     opacity: 1;
+  transform:scale(1.15);
 }
 
 .add-country {
@@ -281,7 +285,7 @@ input, button {
   #toggle_close_buttons {
     float:none;
     margin-left:auto; margin-right:auto;
-    
+
   }
 } */
 @media (min-width:500px) {
