@@ -543,18 +543,26 @@ function toggle_close_buttons(element) {
   
   if (typeof(close_buttons[0]) != 'undefined' && close_buttons != null) {
     if (close_buttons[0].style.display == 'none') {
+      
+      if(document.getElementById('autorefresh').checked) {
+        document.getElementById('autorefresh').checked=false;
+        toggle_auto_refresh(false);
+      }
+
       element.innerHTML = '&nbsp;&nbsp;&nbsp;✔ Done deleting.&nbsp;&nbsp;&nbsp;';
       for (let i=0; i<close_buttons.length; i++) {
         close_buttons[i].style.display = 'block';
       }
     } else if (close_buttons[0].style.display == 'block') {
       element.innerHTML = '✖ Delete countries…';
+
       for (let i=0; i<close_buttons.length; i++) {
         close_buttons[i].style.display = 'none';
       } 
     }
   } else {
     element.innerHTML = '✖ Delete countries…';
+    
   } 
   
 }
