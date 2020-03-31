@@ -267,9 +267,11 @@ input, button {
     background: none;
     border: none;
     opacity: .75;
+    transition: all .2s ease-out;
 }
 .close:hover {
     opacity: 1;
+  transform:scale(1.15);
 }
 
 .add-country {
