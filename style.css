@@ -281,7 +281,13 @@ input, button {
   line-height:2rem;
 }
 
-input {
+input[type="checkbox"],
+input[list],
+input[type="text"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
   padding-left:.25em;
   border:solid 1px #ddd;
   box-shadow: 0 1px 2px 1px #dddddddd;
