@@ -11,11 +11,11 @@ function render_stuff() {
 function toggle_auto_refresh(checked) {
   if (checked) {
     auto_refresh = setInterval(render_stuff, 3000);
-    document.querySelector('.legend').style.backgroundColor='#efef1144';
+    document.querySelectorAll('.legend')[1].style.backgroundColor='#efef1144';
     document.querySelector('#Global').style.backgroundColor="#cccc1188";
   } else {
     clearInterval(auto_refresh);
-    document.querySelector('.legend').style.backgroundColor='#cccccc44';
+    document.querySelectorAll('.legend')[1].style.backgroundColor='#cccccc44';
     document.querySelector('#Global').style.backgroundColor="#ccc";
   }
 }
