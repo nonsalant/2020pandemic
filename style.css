@@ -14,6 +14,12 @@ body {
   font-size:19px;
 }
 
+@media (min-width: 1000px) {
+  .block {
+    font-size:1.15em;
+  }
+}
+
 @media (max-width: 600px) {
   body { font-size:16px; }
   .block,
@@ -61,7 +67,7 @@ u::after {
   right: -0.5rem;
   height: 0.75rem;
   z-index: -1;
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/664131/underline.svg");
+  background-image: url("underline.svg");
   background-repeat: no-repeat;
   background-size: cover;
   /*   opacity:.3; */
@@ -197,6 +203,10 @@ hr {
   display: block;
 }
 
+.block {
+  transition:all .3s ease-out;
+}
+
 .block,
 .legend {
   text-align: right;
@@ -245,12 +255,23 @@ hr {
     }
 
 .country-stats {
-  font-family: "Open Sans Condensed";
+  font-family: "Open Sans Condensed", sans-serif;
+}
+
+.autorefresh-container {
+  margin-top: -0.5em;
+  margin-bottom: 1.5em;
+  display: flex;
+  align-items: center;
+}
+.autorefresh-container input[type="checkbox"] { margin-left:0; }
+@media (min-width:1000px) {
+  .autorefresh-container { margin-bottom:-2em; }
+  .autorefresh-container input[type="checkbox"] { margin-left:.5em; }
 }
 
 #Global {
   background:#ccc;
-  transition:all .3s ease-out;
 }
 
 .gray,
@@ -318,7 +339,7 @@ input[type="text"] {
 }
 
 .add-country {
-  white-space:nowrap;
+  /*white-space:nowrap; */
   margin-left:.3em;
 }
 /* @media (max-width:500px) {
