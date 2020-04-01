@@ -11,11 +11,11 @@ function render_stuff() {
 function toggle_auto_refresh(checked) {
   if (checked) {
     auto_refresh = setInterval(render_stuff, 3000);
-    document.querySelectorAll('.legend')[1].style.backgroundColor='#efef1144';
+    document.querySelectorAll('.legend')[0].style.backgroundColor='#efef1144';
     document.querySelector('#Global').style.backgroundColor="#cccc1188";
   } else {
     clearInterval(auto_refresh);
-    document.querySelectorAll('.legend')[1].style.backgroundColor='#cccccc44';
+    document.querySelectorAll('.legend')[0].style.backgroundColor='#cccccc44';
     document.querySelector('#Global').style.backgroundColor="#ccc";
   }
 }
@@ -38,9 +38,9 @@ function render_hero() {
       <style>
       #virus:before {
         /* Grab Google image graph (pie chart) */
-        background: url("https://chart.googleapis.com/chart?cht=p&chd=t:${percentage},${percentageEmpty}&chs=200x200&chco=dddddd,ffff99") top center no-repeat;
+        background: url("https://chart.googleapis.com/chart?cht=p&chd=t:${percentage},${percentageEmpty}&chs=200x200&chco=DCD3C0,ffefcc") center center no-repeat;
         background-size: contain;
-        opacity: .85;
+        opacity: .90;
         content: "";
         position: absolute;
         width: 1.5em;

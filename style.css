@@ -56,7 +56,7 @@ u {
 u::after {
   content: '';
   position: absolute;
-  bottom: -0.125rem;
+  bottom: -0.5rem;
   left: -0.5rem;
   right: -0.5rem;
   height: 0.75rem;
@@ -81,10 +81,19 @@ p > u::after {
 
 a {
   color: #000066;
+  color: hsla(41, 88%, 35%, 1);
   text-decoration: none;
 }
 a:hover {
   text-decoration: underline;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Open Sans Condensed", serif;
+}
+
+h1 {
+
 }
 
 hr {
@@ -116,7 +125,7 @@ hr {
     background: #fff6f6;
     background: #ffff00;
     background: none;
-    border: dashed 1px #ddd;
+    /* border: dashed 1px #ddd; */
     border-radius: 100%;
     width: 1.75em;
     height: 1.475em;
@@ -136,20 +145,18 @@ hr {
   width: 100%;
   display: block;
   overflow: visible;
-  background-color: #ffeeee;
   color: #222;
   border-radius: 0.25em;
   font-weight: normal;
-  background: #ffff0022;
   border: solid 2px #cccccc88;
   padding: 0 0.2em 0 0;
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  text-align: center;
   min-height: 2em;
 
   background: var(--grain-pattern) repeat scroll center center #ffff1155;
+  background: var(--grain-pattern) repeat scroll center center hsla(41, 100%, 90%, 1);
 }
 
 .percentage-bar {
@@ -236,6 +243,10 @@ hr {
       margin-right: -2.35em;
       margin-right: -0.5em;
     }
+
+.country-stats {
+  font-family: "Open Sans Condensed";
+}
 
 #Global {
   background:#ccc;
