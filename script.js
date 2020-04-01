@@ -12,11 +12,11 @@ function toggle_auto_refresh(checked) {
   if (checked) {
     auto_refresh = setInterval(render_stuff, 3000);
     document.querySelectorAll('.legend')[0].style.backgroundColor='#efef1144';
-    document.querySelector('#Global').style.backgroundColor="#cccc1188";
+    document.querySelector('#Global').style.backgroundColor="hsla(60, 60%, 85%, 0.53)";
   } else {
     clearInterval(auto_refresh);
     document.querySelectorAll('.legend')[0].style.backgroundColor='#cccccc44';
-    document.querySelector('#Global').style.backgroundColor="#ccc";
+    document.querySelector('#Global').style.backgroundColor="hsla(60, 0%, 95%, 0.53)";
   }
 }
 
