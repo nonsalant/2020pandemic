@@ -67,7 +67,7 @@ u::after {
   right: -0.5rem;
   height: 0.75rem;
   z-index: -1;
-  background-image: url("underline.svg");
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/664131/underline.svg");
   background-repeat: no-repeat;
   background-size: cover;
   /*   opacity:.3; */
@@ -246,8 +246,9 @@ hr {
   padding: 0.5em 0.8em 0.5em 0.2em;
 
 
-  background: var(--grain-pattern) repeat scroll center center #cccccc44;
-/*   background-color: #cccccc44; */
+  /*background: var(--grain-pattern) repeat scroll center center #cccccc44; */
+  background-color: #cccccc44;
+  border-bottom: solid 1px #aaa;
 }
     .legend span:last-child {
       margin-right: -2.35em;
@@ -272,6 +273,7 @@ hr {
 
 #Global {
   background:#ccc;
+  background: hsla(60, 0%, 95%, 0.53);
 }
 
 .gray,
