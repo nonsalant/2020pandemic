@@ -160,8 +160,7 @@ hr {
   text-align: center;
   background-color: #ddd;
   color: #222;
-  border-radius: .5em .5em .5em .5em;
-  border-radius: .25em;
+  border-radius: .25rem .25em .25em .25rem;
   font-weight: normal;
   padding: 0 0.2em;
   margin: 0;
