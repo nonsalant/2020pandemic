@@ -1,0 +1,9 @@
+# [[headers]]
+#   # Define which paths this specific [[headers]] block will cover.
+#   for = "contract/template/*"
+#     [headers.values]
+#     Access-Control-Allow-Origin = "*"
+
+# https://kentcdodds.com/blog/super-simple-start-to-serverless
+[build]
+  functions = "./functions"
