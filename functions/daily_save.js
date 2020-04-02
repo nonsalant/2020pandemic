@@ -17,9 +17,11 @@ exports.handler = async event => {
 // from script.js
 
 function render_blocks() {
-  let blocks = document.getElementsByClassName("block");
+  //let blocks = document.getElementsByClassName("block");
+  let blocks = ["Global","USA","Italy","China","Spain","Germany","Iran","France","UK","Switzerland","S.%20Korea","Japan","Romania","Bulgaria","Moldova"];
   for (let i = 0; i < blocks.length; i++) {
-    render(blocks[i].id);
+    //    render(blocks[i].id);
+    render(blocks[i]);
   }
 }
 
