@@ -1,25 +1,25 @@
 // https://kentcdodds.com/blog/super-simple-start-to-serverless
 // runs @ https://stefanmatei.com/.netlify/functions/randid (125K free req/month)
-global.fetch = require("node-fetch");
 
 exports.handler = async event => {
   const prefix = event.queryStringParameters.prefix || 'randid'
   const rando = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 3)
                 +'-'+Math.floor(Math.random() * 999);
+  const blocks = ["Global","USA","Italy","China","Spain","Germany","Iran","France","UK","Switzerland","S.%20Korea","Japan","Romania","Bulgaria","Moldova"];
   return {
     statusCode: 200,
     body: `
     ${prefix}-${rando}
-    ${render_blocks()}
+    ${render_blocks(blocks)}
     `,
   }
 }
 
 // from script.js
 
-function render_blocks() {
+function render_blocks(blocks) {
   //let blocks = document.getElementsByClassName("block");
-  let blocks = ["Global","USA","Italy","China","Spain","Germany","Iran","France","UK","Switzerland","S.%20Korea","Japan","Romania","Bulgaria","Moldova"];
+  //let blocks = ["Global","USA","Italy","China","Spain","Germany","Iran","France","UK","Switzerland","S.%20Korea","Japan","Romania","Bulgaria","Moldova"];
   for (let i = 0; i < blocks.length; i++) {
     //    render(blocks[i].id);
     render(blocks[i]);
