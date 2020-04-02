@@ -10,8 +10,8 @@
     "type": "git",
     "url": "git+https://github.com/nonsalant/2020pandemic.git"
   },
-  "devDependencies" {
-    "node-fetch":"2.6.0"
+  "devDependencies": {
+    "node-fetch": "2.6.0"
   },
   "author": "Stefan Matei",
   "license": "ISC",

@@ -1,9 +1,8 @@
-
+import fetch from "node-fetch"
 
 // https://kentcdodds.com/blog/super-simple-start-to-serverless
 
 exports.handler = async event => {
-  import fetch from "node-fetch"
   const prefix = event.queryStringParameters.prefix || 'randid'
   const rando = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 3)
                 +'-'+Math.floor(Math.random() * 999);
