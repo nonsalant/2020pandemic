@@ -1,5 +1,6 @@
+import fetch from "node-fetch"
+
 // https://kentcdodds.com/blog/super-simple-start-to-serverless
-// runs @ https://stefanmatei.com/.netlify/functions/randid (125K free req/month)
 
 exports.handler = async event => {
   const prefix = event.queryStringParameters.prefix || 'randid'
@@ -38,44 +39,14 @@ function render(id) {
     .then((response) => {
       return response.json();
     })
-    .then((data) => {
+    .then((data) => {      
       let recovered = Number(data.recovered.toFixed(0));
       let deaths = Number(data.deaths.toFixed(0));
       let cases = Number(data.cases.toFixed(0));
       let cr = ((recovered + deaths) / cases).toFixed(2);
-      function color_change(cr) {
-        let colorClass = "gray";
-        if (Number(cr) < 0.1) {
-          colorClass = "red";
-        }
-        if (Number(cr) > 0.3) {
-          colorClass = "green";
-        }
-        return colorClass;
-      }
 
-      document.getElementById(id).innerHTML = `
-        <button class="close" onclick="remove_country(this)" style="display:none;">
-          ❌
-        </button>
-        <!--<a href="${url}" title="View raw data">-->
-          ${unescape(id)}:
-        <!--</a>-->&nbsp;
-        (
-        <b style="color:green">${recovered}</b>
-        +
-        <b class="deaths">${deaths}</b> )
-        /
-        <b style="color:red">${cases}</b>
-        =
-        <b class="${color_change(cr)}">
-          ${cr}
-        </b>
-        <span style="width:1em; text-align:center;">
-          ${flag_emoji(id)}
-        </span>
-      `;
-    });
+      return  `${recovered},${deaths},${cases},${cr},${flag_emoji(id)}`
+    }
 }
 
 // flag_emoji function by Stefan Matei
