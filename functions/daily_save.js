@@ -1,5 +1,6 @@
 // https://kentcdodds.com/blog/super-simple-start-to-serverless
 // runs @ https://stefanmatei.com/.netlify/functions/randid (125K free req/month)
+global.fetch = require("node-fetch");
 
 exports.handler = async event => {
   const prefix = event.queryStringParameters.prefix || 'randid'
