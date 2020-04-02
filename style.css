@@ -267,7 +267,10 @@ hr {
 }
 .autorefresh-container input[type="checkbox"] { margin-left:0; }
 @media (min-width:1000px) {
-  .autorefresh-container { margin-bottom:-2em; }
+  .autorefresh-container {
+      margin-bottom: -2em;
+      margin-top: 0;
+  }
   .autorefresh-container input[type="checkbox"] { margin-left:.5em; }
 }
 
@@ -356,6 +359,23 @@ input[type="text"] {
   .add-country {
     float:right;
   }
+}
+
+.numeral {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.2em;
+    height: 2.2em;
+    margin-bottom:.5em;
+    border-radius: 50%;
+    font-size: .4em;
+    line-height: 1em;
+    font-family: "Open Sans", sans-serif;
+    font-weight: normal;
+    vertical-align: middle;
+    margin-right: -.3em;
+    background: #FBEBCA;
 }
 
 input::-webkit-calendar-picker-indicator {

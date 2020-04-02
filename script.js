@@ -69,7 +69,11 @@ function render_blocks() {
   let blocks = document.getElementsByClassName("block");
   for (let i = 0; i < blocks.length; i++) {
     render(blocks[i].id);
+    let blocks_array=[];
+    blocks_array[i]=blocks[i].id;
+    console.log(blocks_array[i]);
   }
+
 }
 
 function render(id) {
