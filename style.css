@@ -15,7 +15,8 @@ body {
 }
 
 @media (min-width: 1000px) {
-  .block {
+  .block,
+  .legend {
     font-size:1.15em;
   }
 }
