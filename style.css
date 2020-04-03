@@ -116,11 +116,12 @@ hr {
 }
 
 .logo {
-  color: #777;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  color: #333;
+  color: #111;
+  /* text-transform: uppercase; */
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.025em;
   font-weight: normal;
-  font-size: 1.5em;
   margin-top: 1em;
   font-size: 1.55em;
   line-height: 1.15em;
@@ -233,6 +234,7 @@ hr {
       text-align: left;
     }
 .legend {
+  font-family: "Open Sans Condensed", sans-serif;
   text-transform: uppercase;
   display: flex;
   flex-wrap: wrap;
