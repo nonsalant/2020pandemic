@@ -103,6 +103,10 @@ h1 {
 
 }
 
+h4 {
+  text-transform:uppercase;
+}
+
 hr {
   opacity: 0.5;
 }
