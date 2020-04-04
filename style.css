@@ -291,8 +291,9 @@ hr {
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
+  text-transform: inherit;
 }
-.legend span:last-child {
+.legend .c-ratio {
   margin-right: -2.35em;
   margin-right: .275em;
 }
