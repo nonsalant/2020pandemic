@@ -120,12 +120,34 @@ function render(id) {
           ${flag_emoji(id)}
         </span>
       `;
-
-      sortList('.cases');
+    })
+    .then(() => {
+      sortList();
     });
 }
 
-
+function sortList(sortBy=".cases") {
+  var list, i, switching, b, shouldSwitch;
+  switching = true;
+  while (switching) {
+    switching = false;
+    b = document.querySelectorAll(".country-stats .block:not(#Global)");
+    for (i = 0; i < (b.length - 1); i++) {
+      shouldSwitch = false;
+      if ( b[i].querySelector(sortBy) && b[i+1].querySelector(sortBy) ) {
+        if ( Number(b[i].querySelector(sortBy).innerHTML) < Number(b[i + 1].querySelector(sortBy).innerHTML) ) {
+          //console.log(b[i].querySelector(sortBy).innerHTML);
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      b[i].parentNode.insertBefore(b[i + 1], b[i]);
+      switching = true;
+    }
+  }
+}
 
 
 function toggle_close_buttons(element) {
@@ -244,44 +266,6 @@ function add_country(country) {
   bbb.push(escape(country));
   localStorage.setItem( 'pandemicSavedCountries', bbb.join() );
   //console.log(bbb.join());
-}
-
-
-//https://medium.com/@mhagemann/the-ultimate-way-to-slugify-a-url-string-in-javascript-b8e4a0d849e1
-function slugify(string) {
-  const a = 'àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;'
-  const b = 'aaaaaaaaaacccddeeeeeeeegghiiiiiilmnnnnooooooooprrsssssttuuuuuuuuuwxyyzzz------'
-  const p = new RegExp(a.split('').join('|'), 'g')
-
-  return string.toString().toLowerCase()
-    .replace(/\s+/g, '-') // Replace spaces with -
-    .replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
-    .replace(/&/g, '-and-') // Replace & with 'and'
-    .replace(/[^\w\-]+/g, '') // Remove all non-word characters
-    .replace(/\-\-+/g, '-') // Replace multiple - with single -
-    .replace(/^-+/, '') // Trim - from start of text
-    .replace(/-+$/, '') // Trim - from end of text
-}
-
-function sortList(sortBy=".cases") {
-  var list, i, switching, b, shouldSwitch;
-  switching = true;
-  while (switching) {
-    switching = false;
-    b = document.querySelectorAll(".country-stats .block:not(#Global)");
-    for (i = 0; i < (b.length - 1); i++) {
-      shouldSwitch = false;
-      if ( Number(b[i].querySelector(sortBy).innerHTML) < Number(b[i + 1].querySelector(sortBy).innerHTML) ) {
-        //console.log(b[i].querySelector(sortBy).innerHTML);
-        shouldSwitch = true;
-        break;
-      }
-    }
-    if (shouldSwitch) {
-      b[i].parentNode.insertBefore(b[i + 1], b[i]);
-      switching = true;
-    }
-  }
 }
 
 // flag_emoji function by Stefan Matei
