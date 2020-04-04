@@ -282,6 +282,11 @@ hr {
   /*background: var(--grain-pattern) repeat scroll center center #cccccc44; */
   background-color: #cccccc44;
   border-bottom: solid 1px #aaa;
+  /**
+  position: sticky;
+  top: 0px;
+  background-color: rgba(204, 204, 204, 1);
+  /**/
 }
 .legend button {
   background: none;
