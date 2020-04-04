@@ -3,6 +3,8 @@ localStorageInit();
 render_stuff();
 //let auto_refresh = setInterval(render_stuff, 3000);
 
+sort_options();
+
 function render_stuff() {
   render_hero();
   render_blocks();
@@ -127,7 +129,7 @@ function render(id) {
 }
 
 function sortList(sortBy=".cases") {
-  var list, i, switching, b, shouldSwitch;
+  let i, switching, b, shouldSwitch;
   switching = true;
   while (switching) {
     switching = false;
@@ -239,6 +241,51 @@ function localStorageInit() {
   }
 }
 
+function remove_all_countries() {
+  document.querySelector('.country-stats').innerHTML = '';
+  localStorage.setItem('pandemicSavedCountries','');
+}
+
+function add_all_countries() {
+  let countryOptions = document.querySelectorAll('#country-list option');
+  remove_all_countries();
+  for(let i=0; i<countryOptions.length; i++) {
+    let new_country = countryOptions[i].value;
+    new_country = new_country.split(' ');
+    new_country.shift();
+    new_country = new_country.join(' ');
+    if (new_country && !document.getElementById(escape(new_country)) ) {
+      console.log(new_country +" added.");
+      add_country(new_country);
+    } else if ( document.getElementById(escape(new_country)) ) {
+      alert(new_country+' is already shown.')
+    }
+  }
+}
+
+function sort_options() {
+  let i, switching, b, shouldSwitch;
+  switching = true;
+  while (switching) {
+    switching = false;
+    b = document.querySelectorAll("#country-list option");
+    for (i = 0; i < (b.length - 1); i++) {
+      shouldSwitch = false;
+      if ( b[i].value && b[i+1].value ) {
+        if ( b[i].value > b[i+1].value ) {
+          //console.log(b[i].querySelector(sortBy).innerHTML);
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      b[i].parentNode.insertBefore(b[i + 1], b[i]);
+      switching = true;
+    }
+  }
+}
+
 function remove_country(el) {
   el.parentNode.remove();
   console.log(unescape(el.parentNode.id)+' removed.')
@@ -260,12 +307,19 @@ function add_country(country) {
     <div id="${escape(country)}" class="block"></div>
   `;
   render(escape(country));
-
+  //let pandemicSavedCountries = localStorage.getItem( 'pandemicSavedCountries');
+  //if (pandemicSavedCountries && pandemicSavedCountries !== '{}') {
   let pandemicSavedCountries = localStorage.getItem('pandemicSavedCountries');
-  let bbb = pandemicSavedCountries.split(',');
-  bbb.push(escape(country));
+  let bbb=[];
+  if (pandemicSavedCountries === null) {
+    country=escape(country);
+    bbb = [country];
+  } else {
+    let pandemicSavedCountries = localStorage.getItem('pandemicSavedCountries');
+    bbb = pandemicSavedCountries.split(',');
+    bbb.push(escape(country));
+  }
   localStorage.setItem( 'pandemicSavedCountries', bbb.join() );
-  //console.log(bbb.join());
 }
 
 // flag_emoji function by Stefan Matei

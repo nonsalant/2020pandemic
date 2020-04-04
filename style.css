@@ -403,12 +403,13 @@ input::-webkit-calendar-picker-indicator {
 }
 
 
-button {
-  color: #2b6cb0;
+.button {
   padding-left: 1rem;
   padding-right: 1rem;
-/*   padding-top: .25rem;
-  padding-bottom: .4rem; */
+  /**
+  padding-top: .25rem;
+  padding-bottom: .4rem;
+  /**/
   font-weight: 700;
   border-radius: .25rem;
   font-weight: 600;
@@ -418,10 +419,20 @@ button {
   transition:all .175s ease-out;
   font-family: var(--ui-font);
 
-  color: #f44336;
+  color: #2b6cb0;
+  color: hsla(41, 88%, 25%, 1);
   border: solid 1px #ccaba8;
 }
 .button:hover{
+  background-color:hsla(41, 88%, 25%, 1);
+  color: #fff;
+}
+
+.button.danger {
+  color: #f44336;
+  border: solid 1px #ccaba8;
+}
+.button.danger:hover{
   background-color:#f44336;
   color: #fff;
 }
