@@ -293,6 +293,9 @@ hr {
 	outline: inherit;
   text-transform: inherit;
 }
+.legend button:hover {
+  filter: sepia(1);
+}
 .legend .c-ratio {
   margin-right: -2.35em;
   margin-right: .275em;
