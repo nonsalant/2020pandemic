@@ -447,8 +447,8 @@ input::-webkit-calendar-picker-indicator {
   color: hsla(41, 88%, 25%, 1);
   border: solid 1px #ccaba8;
 }
-.button:hover{
-  background-color:hsla(41, 88%, 25%, 1);
+.button:hover {
+  background-color: hsla(41, 55%, 30%, 1);
   color: #fff;
 }
 
