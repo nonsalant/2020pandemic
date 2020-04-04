@@ -102,20 +102,29 @@
 
     <small class="legend">
       (
-      <span class="green" style="background:#fafffacc;">
-        Recoveries
-      </span>
+      <button onclick="sortList('.recovered');">
+        <span class="green" style="background:#fafffacc;">
+          Recoveries
+        </span>
+      </button>
       +
-      <span class="deaths">
-        Deaths
-      </span>
+      <button onclick="sortList('.deaths');">
+        <span class="deaths">
+          Deaths
+        </span>
+      </button>
       ) /
-      <span class="red" style="background:#fffafacc;">
-       Tot. Cases
-      </span> =
-      <span class="gray">
-        C. Ratio
-      </span>
+      <button onclick="sortList('.cases');">
+        <span class="red" style="background:#fffafacc;">
+         Tot. Cases
+        </span>
+      </button>
+      =
+      <button onclick="sortList('.c-ratio');">
+        <span class="gray">
+          C. Ratio
+        </span>
+      </button>
     </small>
 
     <div class="country-stats">
