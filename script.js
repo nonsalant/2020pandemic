@@ -35,6 +35,13 @@ function render_hero() {
       let percentageEmpty = 100 - percentage;
 
       document.getElementById("hero").innerHTML = `
+      <div class="percentage-bar" style="width:${percentage}%;">
+        ${percentage}%
+      </div>
+      <small class="percentage-empty">
+          ${percentageEmpty}% 🦠 ACTIVE CASES
+      </small>
+
       <style>
       #virus:before {
         /* Grab Google image graph (pie chart) */
@@ -49,19 +56,7 @@ function render_hero() {
         display: block;
       }
       </style>
-
-      <div class="percentage-bar" style="width:${percentage}%;">
-
-      <span>
-        ${percentage}%
-      </span>
-
-    </div>
-
-    <small class="percentage-empty">
-        ${percentageEmpty}% 🦠 ACTIVE CASES
-    </small>
-    `;
+      `;
     });
 }
 
