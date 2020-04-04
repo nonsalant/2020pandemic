@@ -13,12 +13,12 @@ function render_stuff() {
 function toggle_auto_refresh(checked) {
   if (checked) {
     auto_refresh = setInterval(render_stuff, 3000);
-    document.querySelectorAll('.legend')[0].style.backgroundColor='#efef1144';
-    document.querySelector('#Global').style.backgroundColor="hsla(60, 60%, 85%, 0.53)";
+    document.querySelectorAll('.legend')[0].style.backgroundColor='#F3F3B6';
+    if (document.querySelector('#Global')) document.querySelector('#Global').style.backgroundColor="hsla(60, 60%, 85%, 0.53)";
   } else {
     clearInterval(auto_refresh);
-    document.querySelectorAll('.legend')[0].style.backgroundColor='#cccccc44';
-    document.querySelector('#Global').style.backgroundColor="hsla(60, 0%, 95%, 0.53)";
+    document.querySelectorAll('.legend')[0].style.backgroundColor='rgba(225, 225, 225, 1)';
+    if (document.querySelector('#Global')) document.querySelector('#Global').style.backgroundColor="hsla(60, 0%, 95%, 0.53)";
   }
 }
 
@@ -131,9 +131,12 @@ function render(id) {
     });
 }
 
-function sortList(sortBy=".cases") {
+function sortList(sortBy=".cases", stopRefreshing = false) {
   let i, switching, b, shouldSwitch;
   switching = true;
+
+  if(stopRefreshing) stop_auto_refresh();
+
   while (switching) {
     switching = false;
     b = document.querySelectorAll(".country-stats .block:not(#Global)");
@@ -154,17 +157,23 @@ function sortList(sortBy=".cases") {
   }
 }
 
+function stop_auto_refresh() {
+  if(document.getElementById('autorefresh').checked) {
+    document.getElementById('autorefresh').checked=false;
+    toggle_auto_refresh(false);
+  }
+}
+
 
 function toggle_close_buttons(element) {
   let close_buttons = document.querySelectorAll('.close');
 
+  if (!close_buttons) return;
+
   if (typeof(close_buttons[0]) != 'undefined' && close_buttons != null) {
     if (close_buttons[0].style.display == 'none') {
 
-      if(document.getElementById('autorefresh').checked) {
-        document.getElementById('autorefresh').checked=false;
-        toggle_auto_refresh(false);
-      }
+      stop_auto_refresh();
 
       element.innerHTML = '&nbsp;&nbsp;&nbsp;Done deleting.&nbsp;&nbsp;';
       for (let i=0; i<close_buttons.length; i++) {
@@ -260,7 +269,7 @@ function add_all_countries() {
     new_country = new_country.join(' ');
     if (new_country && !document.getElementById(escape(new_country)) ) {
       console.log(new_country +" added.");
-      add_country(new_country);
+      add_country(new_country, false);
     } else if ( document.getElementById(escape(new_country)) ) {
       alert(new_country+' is already shown.')
     }
