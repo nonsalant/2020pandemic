@@ -66,7 +66,7 @@ function render_blocks() {
     render(blocks[i].id);
     let blocks_array=[];
     blocks_array[i]=blocks[i].id;
-    console.log(blocks_array[i]);
+    //console.log(blocks_array[i]);
   }
 
 }
@@ -103,23 +103,25 @@ function render(id) {
         <button class="close" onclick="remove_country(this)" style="display:none;">
           ❌
         </button>
-        <!--<a href="${url}" title="View raw data">-->
+        <!--<a class="country-name" href="${url}" title="View raw data">-->
           ${unescape(id)}:
         <!--</a>-->&nbsp;
         (
-        <b style="color:green">${recovered}</b>
+        <b class="recovered" style="color:green">${recovered}</b>
         +
         <b class="deaths">${deaths}</b> )
         /
-        <b style="color:red">${cases}</b>
+        <b class="cases" style="color:red">${cases}</b>
         =
-        <b class="${color_change(cr)}">
+        <b class="c-ratio ${color_change(cr)}">
           ${cr}
         </b>
-        <span style="width:1em; text-align:center;">
+        <span class="flag" style="width:1em; text-align:center;">
           ${flag_emoji(id)}
         </span>
       `;
+
+      sortList('.cases');
     });
 }
 
@@ -259,6 +261,27 @@ function slugify(string) {
     .replace(/\-\-+/g, '-') // Replace multiple - with single -
     .replace(/^-+/, '') // Trim - from start of text
     .replace(/-+$/, '') // Trim - from end of text
+}
+
+function sortList(sortBy=".cases") {
+  var list, i, switching, b, shouldSwitch;
+  switching = true;
+  while (switching) {
+    switching = false;
+    b = document.querySelectorAll(".country-stats .block:not(#Global)");
+    for (i = 0; i < (b.length - 1); i++) {
+      shouldSwitch = false;
+      if ( Number(b[i].querySelector(sortBy).innerHTML) < Number(b[i + 1].querySelector(sortBy).innerHTML) ) {
+        //console.log(b[i].querySelector(sortBy).innerHTML);
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      b[i].parentNode.insertBefore(b[i + 1], b[i]);
+      switching = true;
+    }
+  }
 }
 
 // flag_emoji function by Stefan Matei
