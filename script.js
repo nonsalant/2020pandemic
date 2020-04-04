@@ -3,7 +3,7 @@ localStorageInit();
 render_stuff();
 //let auto_refresh = setInterval(render_stuff, 3000);
 
-sort_options();
+
 
 function render_stuff() {
   render_hero();
@@ -74,6 +74,9 @@ function render_blocks() {
 }
 
 function render(id) {
+
+  if (!id) return;
+
   let url = ""; //let txt = '{"cases":422966,"deaths":18906,"recovered":109143}';
   if (id === "Global") {
     url = "https://coronavirus-19-api.herokuapp.com/all/";
@@ -221,10 +224,11 @@ function localStorageInit() {
   let pandemicSavedCountries = localStorage.getItem('pandemicSavedCountries');
   if (!pandemicSavedCountries || pandemicSavedCountries === '{}') {
     let aaa = document.querySelectorAll('.country-stats .block');
+    // let bb = aaa.map(x => x.id);
     let aa = '';
     for (let i=0; i<aaa.length; i++) {
       aa += aaa[i].id;
-      if (i<(aaa.length-1)) {
+      if (i<(aaa.length-1) && aaa[i].id && aaa[i].id!=='') {
           aa+=',';
       }
     }
@@ -263,28 +267,34 @@ function add_all_countries() {
   }
 }
 
-function sort_options() {
-  let i, switching, b, shouldSwitch;
-  switching = true;
-  while (switching) {
-    switching = false;
-    b = document.querySelectorAll("#country-list option");
-    for (i = 0; i < (b.length - 1); i++) {
-      shouldSwitch = false;
-      if ( b[i].value && b[i+1].value ) {
-        if ( b[i].value > b[i+1].value ) {
-          //console.log(b[i].querySelector(sortBy).innerHTML);
-          shouldSwitch = true;
-          break;
-        }
-      }
-    }
-    if (shouldSwitch) {
-      b[i].parentNode.insertBefore(b[i + 1], b[i]);
-      switching = true;
-    }
-  }
-}
+////sort_options();
+// function sort_options() {
+//   let i, switching, b, shouldSwitch;
+//   switching = true;
+//   while (switching) {
+//     switching = false;
+//     b = document.querySelectorAll("#country-list option");
+//     for (i = 0; i < (b.length - 1); i++) {
+//       shouldSwitch = false;
+//       if ( b[i].value && b[i+1].value ) {
+//         let current = b[i].value.split(' ');
+//         current.shift();
+//         current = current.join(' ');
+//         let next = b[i+1].value.split(' ');
+//         next.shift();
+//         next = next.join(' ');
+//         if ( current > next ) {
+//           shouldSwitch = true;
+//           break;
+//         }
+//       }
+//     }
+//     if (shouldSwitch) {
+//       b[i].parentNode.insertBefore(b[i + 1], b[i]);
+//       switching = true;
+//     }
+//   }
+// }
 
 function remove_country(el) {
   el.parentNode.remove();
