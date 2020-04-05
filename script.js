@@ -1,3 +1,12 @@
+// Open external links in new tabs
+let links = document.links;
+for (let i = 0, linksLength = links.length; i < linksLength; i++) {
+  if (links[i].hostname != window.location.hostname) {
+    links[i].target = '_blank';
+    links[i].rel = 'noopener';
+  }
+}
+
 localStorageInit();
 
 render_stuff();
@@ -108,9 +117,17 @@ function render(id) {
         <button class="close" onclick="remove_country(this)" style="display:none;">
           ❌
         </button>
-        <!--<a class="country-name" href="${url}" title="View raw data">-->
+        <button class="country-name has-tooltip-fade"
+        data-tooltip="Cases per 1 million: ${data.casesPerOneMillion}
+Deaths per 1 million: ${data.deathsPerOneMillion}
+Tests per 1 million: ${data.testsPerOneMillion}
+
+Cases today: ${data.todayCases}
+Deaths today: ${data.todayDeaths}
+"
+        target="_blank">
           ${unescape(id)}:
-        <!--</a>-->&nbsp;
+        </button>&nbsp;
         (
         <b class="recovered" style="color:green">${recovered}</b>
         +
@@ -209,22 +226,7 @@ document.querySelector('#country-list-choice').addEventListener('change', (event
   document.getElementById('country-list-choice').value = '';
 });
 
-// //country_list();
-// function country_list() {
-//   let url = "https://coronavirus-19-api.herokuapp.com/countries/";
-//   fetch(url)
-//     .then((response) => {
-//     return response.json();
-//   })
-//     .then((data) => {
-//     let str = '';
-//     for (let i=0; i<data.length; i++) {
-//       str+=flag_emoji(escape(data[i].country))+' '+data[i].country+',';
-//     }
-//     console.log(str);
-//     //"🇺🇸 USA,🇮🇹 Italy,🇪🇸 Spain,🇩🇪 Germany,🇫🇷 France,🇮🇷 Iran,🇬🇧 UK,🇨🇭 Switzerland,🇧🇪 Belgium,🇳🇱 Netherlands,🇹🇷 Turkey,🇰🇷 S. Korea,🇦🇹 Austria,🇨🇦 Canada,🇵🇹 Portugal,🇮🇱 Israel,🇧🇷 Brazil,🇳🇴 Norway,🇦🇺 Australia,🇸🇪 Sweden,🇨🇿 Czechia,🇮🇪 Ireland,🇲🇾 Malaysia,🇩🇰 Denmark,🇨🇱 Chile,🇵🇱 Poland,🇱🇺 Luxembourg,🇪🇨 Ecuador,🇷🇴 Romania,🇯🇵 Japan,🇷🇺 Russia,🇵🇰 Pakistan,🇵🇭 Philippines,🇹🇭 Thailand,🇸🇦 Saudi Arabia,🇮🇩 Indonesia,🇫🇮 Finland,🇿🇦 South Africa,🇮🇳 India,🇬🇷 Greece,🇮🇸 Iceland,🇲🇽 Mexico,🇵🇦 Panama,🇵🇪 Peru,🇩🇴 Dominican Republic,🇸🇬 Singapore,🇦🇷 Argentina,🇨🇴 Colombia,🇭🇷 Croatia,🇷🇸 Serbia,🇸🇮 Slovenia,🇪🇪 Estonia,🚢 Diamond Princess,🇶🇦 Qatar,🇪🇬 Egypt,🇭🇰 Hong Kong,🇮🇶 Iraq,🇦🇪 UAE,🇳🇿 New Zealand,🇩🇿 Algeria,🇲🇦 Morocco,🇧🇭 Bahrain,🇱🇹 Lithuania,🇦🇲 Armenia,🇺🇦 Ukraine,🇭🇺 Hungary,🇱🇧 Lebanon,🇱🇻 Latvia,🇧🇬 Bulgaria,🇧🇦 Bosnia and Herzegovina,🇸🇰 Slovakia,🇦🇩 Andorra,🇨🇷 Costa Rica,🇹🇳 Tunisia,🇺🇾 Uruguay,🇹🇼 Taiwan,🇰🇿 Kazakhstan,🇲🇩 Moldova,🇲🇰 North Macedonia,🇦🇿 Azerbaijan,🇯🇴 Jordan,🇰🇼 Kuwait,🇧🇫 Burkina Faso,🇸🇲 San Marino,🇨🇾 Cyprus,&nbsp;&nbsp;&nbsp;&thinsp; Réunion,🇦🇱 Albania,🇻🇳 Vietnam,🇴🇲 Oman,🇦🇫 Afghanistan,🇨🇺 Cuba,🇫🇴 Faeroe Islands,🇨🇮 Ivory Coast,🇸🇳 Senegal,🇲🇹 Malta,🇬🇭 Ghana,🇧🇾 Belarus,🇺🇿 Uzbekistan,&nbsp;&nbsp;&nbsp;&thinsp; Channel Islands,🇨🇲 Cameroon,🇭🇳 Honduras,🇻🇪 Venezuela,🇲🇺 Mauritius,🇧🇳 Brunei,🇱🇰 Sri Lanka,🇵🇸 Palestine,🇳🇬 Nigeria,🇰🇭 Cambodia,🇬🇵 Guadeloupe,🇬🇪 Georgia,🇧🇴 Bolivia,🇰🇬 Kyrgyzstan,🇲🇶 Martinique,🇲🇪 Montenegro,&nbsp;&nbsp;&nbsp;&thinsp; Trinidad and Tobago,🇾🇹 Mayotte,🇨🇩 DRC,🇷🇼 Rwanda,🇬🇮 Gibraltar,🇵🇾 Paraguay,🇱🇮 Liechtenstein,🇰🇪 Kenya,🇦🇼 Aruba,🇧🇩 Bangladesh,🇲🇨 Monaco,🇮🇲 Isle of Man,🇬🇫 French Guiana,🇲🇬 Madagascar,🇲🇴 Macao,🇬🇹 Guatemala,🇯🇲 Jamaica,🇵🇫 French Polynesia,🇿🇲 Zambia,🇧🇧 Barbados,🇺🇬 Uganda,🇹🇬 Togo,🇸🇻 El Salvador,🇲🇱 Mali,🇪🇹 Ethiopia,🇳🇪 Niger,🇧🇲 Bermuda,🇬🇳 Guinea,🇨🇬 Congo,🇹🇿 Tanzania,🇩🇯 Djibouti,🇲🇻 Maldives,🇲🇫 Saint Martin,🇭🇹 Haiti,🇳🇨 New Caledonia,🇧🇸 Bahamas,🇲🇲 Myanmar,🇰🇾 Cayman Islands,🇬🇶 Equatorial Guinea,🇪🇷 Eritrea,🇲🇳 Mongolia,&nbsp;&nbsp;&nbsp;&thinsp; Curaçao,🇩🇲 Dominica,🇳🇦 Namibia,🇬🇱 Greenland,🇸🇾 Syria,🇬🇩 Grenada,🇱🇨 Saint Lucia,🇸🇿 Eswatini,🇬🇾 Guyana,🇬🇼 Guinea-Bissau,🇱🇦 Laos,🇱🇾 Libya,🇲🇿 Mozambique,🇸🇨 Seychelles,🇸🇷 Suriname,🇦🇴 Angola,🇬🇦 Gabon,🇿🇼 Zimbabwe,🇦🇬 Antigua and Barbuda,🇰🇳 Saint Kitts and Nevis,🇸🇩 Sudan,🇨🇻 Cabo Verde,🇧🇯 Benin,🇻🇦 Vatican City,🇧🇱 St. Barth,🇸🇽 Sint Maarten,🇳🇵 Nepal,🇹🇩 Chad,🇫🇯 Fiji,🇲🇷 Mauritania,🇲🇸 Montserrat,🇹🇨 Turks and Caicos,🇬🇲 Gambia,🇳🇮 Nicaragua,🇧🇹 Bhutan,🇧🇿 Belize,🇧🇼 Botswana,🇨🇫 CAR,🇱🇷 Liberia,🇸🇴 Somalia,🚢 MS Zaandam,🇦🇮 Anguilla,🇻🇬 British Virgin Islands,🇵🇬 Papua New Guinea,🇻🇨 St. Vincent Grenadines,🇹🇱 Timor-Leste,🇨🇳 China,"
-//   });
-// }
+
 
 
 // localStorage
