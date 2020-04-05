@@ -17,7 +17,8 @@
 
 <body>
 
-  <!--
+
+<!--
   https://2020pandemic.netlify.com/
   https://codepen.io/nonsalant/pen/jOPQRrE
   https://github.com/nonsalant/2020pandemic
@@ -93,13 +94,7 @@
     <h2 style="font-size:1.35em">
       <span class="numeral">03</span> How different countries have dealt with the pandemic so far
     </h2>
-
-    <small class="autorefresh-container">
-      <input onclick="toggle_auto_refresh(this.checked)"
-             type="checkbox" id="autorefresh" name="autorefresh">&thinsp;
-      <label for="autorefresh"><b><u>Auto-refresh data</u></b></label>
-    </small>
-
+    
     <figure style="margin:0; margin-bottom:1em">
 
       <small class="legend">
@@ -157,12 +152,18 @@
         <div id="South%20Africa" class="block"></div>
         <div id="Ukraine" class="block"></div>
 
-        <div id="Moldova" class="block"></div>
+        <div id="Moldova" class="block"></div> 
         <div id="Bulgaria" class="block"></div>
 
         <div id="Global" class="block"></div>
       </div><!-- .contry-stats -->
     </figure>
+    
+    <small class="autorefresh-container">
+      <input onclick="toggle_auto_refresh(this.checked)"
+             type="checkbox" id="autorefresh" name="autorefresh">&thinsp;
+      <label for="autorefresh"><b><u>Auto-refresh data</u></b></label>
+    </small>
 
     <p style="float:left; width:100%; display:flex; justify-content:space-between;align-items:center;flex-wrap:wrap;">
       <button class="button danger" style="margin-bottom:1em;" onclick="toggle_close_buttons(this)" id="toggle_close_buttons">Delete countries…</button>
@@ -432,6 +433,7 @@
 
   </div>
   <!-- /.contain -->
+
 
 <style media="screen">
   #footer a { color: hsla(200, 26%, 15%, 1); }
