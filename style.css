@@ -207,8 +207,8 @@ hr {
 /* Autorefresh */
 
 .autorefresh-container {
-  margin-top: -0.5em;
-  margin-bottom: 1.5em;
+  margin-top: -0em;
+  margin-bottom: 1em;
   display: flex;
   align-items: center;
 }

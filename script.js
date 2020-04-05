@@ -17,7 +17,7 @@ function toggle_auto_refresh(checked) {
     if (document.querySelector('#Global')) document.querySelector('#Global').style.backgroundColor="hsla(60, 60%, 85%, 0.53)";
   } else {
     clearInterval(auto_refresh);
-    document.querySelectorAll('.legend')[0].style.backgroundColor='rgba(225, 225, 225, 1)';
+    document.querySelectorAll('.legend')[0].style.backgroundColor='rgba(245, 245, 245, 1)';
     if (document.querySelector('#Global')) document.querySelector('#Global').style.backgroundColor="hsla(60, 0%, 95%, 0.53)";
   }
 }
