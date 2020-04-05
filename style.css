@@ -58,7 +58,7 @@ https://codepen.io/nonsalant/pen/MxoQgR
 u {
   position: relative;
   text-decoration: none;
-  /* color: inherit; */
+  color: inherit;
 }
 u::after {
   content: '';
@@ -231,7 +231,7 @@ hr {
 
 /**/
 
-.country-stats button {
+.country-stats .block button {
   color: hsla(200, 26%, 15%, 1);
 }
 .country-stats .block:not(#Global) button:hover,
