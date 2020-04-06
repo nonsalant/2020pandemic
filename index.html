@@ -79,11 +79,14 @@
 
     <figure style="margin:0; margin-bottom:1em">
       <small class="legend">
-        <button style="margin-right:auto; text-transform:none; text-align:left; filter:none;"
-                class="has-tooltip-right has-tooltip-multiline"
-        data-tooltip="Tap the elements below for more info.
-Tap on the right to re-order the chart."
-        >ℹ</button>
+        <button
+        class="tooltip-info has-tooltip-right"
+        data-tooltip="1. Tap the labels on the right to re-order the chart.
+2. Tap the elements below for more info.
+3. Tap away from an element to hide its tooltip.
+">
+          <span style="font-style: italic; font-family: serif; font-weight: bold;">i</span>
+        </button>
         (
         <button onclick="sortList('.recovered', true);">
           <span class="green" style="background:#fafffacc;">
@@ -150,10 +153,15 @@ Tap on the right to re-order the chart."
       <label for="autorefresh"><b><u>Auto-refresh data</u></b></label>
     </small>
 
-    <p style="width:100%; display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;">
-      <button class="button danger" style="margin-bottom:1em;" onclick="toggle_close_buttons(this)" id="toggle_close_buttons">Delete countries…</button>
+    <p style="width:100%;
+              max-width: calc(100vw - 6em);
+              display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;">
+      <button
+              data-tooltip="Delete individual countries"
+              class="button danger" style="margin-bottom:1em;" onclick="toggle_close_buttons(this)" id="toggle_close_buttons">Delete countries…</button>
       <button class="button danger" style="margin-bottom:1em;" onclick="remove_all_countries()">Delete all</button>
-      <span style="margin-bottom:1em;" class="add-country">
+      <span style="margin-bottom:1em;" class="add-country"
+            data-tooltip="Type below or use ▾ to select from dropdown">
         <label for="country-list-choice"><small>➕</small> <u><b>Add</b></u>:</label>&nbsp;
         <input placeholder=" country…" list="country-list" id="country-list-choice" name="country-list-choice" />
         <datalist id="country-list">
@@ -365,7 +373,9 @@ Tap on the right to re-order the chart."
           <!-- <option value="🇨🇼 Curaçao"> -->
         </datalist>
       </span>
-      <button class="button" style="margin-bottom:1em;" onclick="add_all_countries()">Add all</button>
+      <button
+        data-tooltip="May take a few seconds"
+        class="button has-tooltip-top" style="margin-bottom:1em;" onclick="add_all_countries()">Add all</button>
     </p>
 
     <h4>info & privacy</h4>

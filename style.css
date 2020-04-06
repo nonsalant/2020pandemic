@@ -399,12 +399,13 @@ input[type="text"] {
 }
 
 .close {
-    margin-right: auto;
-    padding-bottom: .2em;
-    background: none;
-    border: none;
-    opacity: .75;
-    transition: all .2s ease-out;
+  margin-right: auto;
+  padding-bottom: .2em;
+  background: none;
+  border: none;
+  opacity: .75;
+  transition: all .2s ease-out;
+  font-size: .8em !important;
 }
 .close:hover {
     opacity: 1;
@@ -571,12 +572,52 @@ https://github.com/Wikiki/bulma-tooltip/blob/master/dist/css/bulma-tooltip.min.c
   border: solid 1px #222;
   color: #222;
   border-radius: 2px;
-  content: attr(data-tooltip);
-  padding: 0.5rem 1rem;
-  text-overflow: ellipsis;
-  white-space: pre;
+  box-sizing: border-box;
 }
-[data-tooltip]:not([disabled])::after {
+
+
+/* Tooltip arrows -- experimental (and using !important) */
+/* [data-tooltip]:not([disabled]):not(.has-tooltip-bottom):not(.has-tooltip-top):not(.has-tooltip-left):not(.has-tooltip-right)::after {
   border-top-color: hsla(200, 26%, 15%, .97);
-  border-top-color: hsl(40, 86%, 89%);
+  border-bottom-color: hsl(40, 86%, 89%) !important;
+}
+[data-tooltip]:not([disabled]).has-tooltip-bottom::after {
+  border-top-color: hsl(40, 86%, 89%) !important;
+}
+[data-tooltip]:not([disabled]).has-tooltip-top::after {
+  border-bottom-color: hsl(40, 86%, 89%) !important;
+}
+[data-tooltip]:not([disabled]).has-tooltip-left::after {
+  border-right-color: hsl(40, 86%, 89%) !important;
+}
+[data-tooltip]:not([disabled]).has-tooltip-right::after {
+  border-left-color: hsl(40, 86%, 89%) !important;
+} */
+[data-tooltip]:not([disabled])::after,
+[data-tooltip]:not(.is-disabled)::after {
+    opacity: .5 !important;
+}
+
+
+button:focus[data-tooltip]:not([disabled])::before {
+  font-weight: bold;
+}
+
+
+body .legend .tooltip-info {
+  margin-right:auto;text-transform:none;text-align:left;filter:none;
+  background: #f3f3b6;
+  background: #FBEBCA;
+  border: solid 2px #ffffffaa;
+  display: inline-flex; width: 1.5em;height: 1.5em;border-radius: 50%;
+  align-items: center; justify-content: center;
+}
+
+.tooltip-info[data-tooltip]:not([disabled])::before {
+  background: hsl(40, 86%, 89%);
+  border: solid 2px #22222255;
+  color: #222;
+  border-radius: 5px;
+  box-sizing: border-box;
+  max-width: calc(100vw - 5em);
 }
