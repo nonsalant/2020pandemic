@@ -383,7 +383,9 @@ hr {
   background: #ccffccff;
 }
 
-body .block .deaths {
+body .block .deaths,
+body .legend .deaths,
+.deaths {
   background-color: #111;
   color: #eee;
   border-radius: 0.1em;
