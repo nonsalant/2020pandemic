@@ -344,6 +344,10 @@ hr {
     flex-direction: column;
 }
 
+.country-stats button {
+  cursor: default !important;
+}
+
 #Global {
   order: 999;
   background:#ccc;
@@ -503,6 +507,11 @@ input::-webkit-calendar-picker-indicator {
   background-color:#f44336;
   color: #fff;
 }
+.button.danger:focus {
+  color: #f44336;
+  background:rgba(255,255,255,.75);
+  border: solid 1px #ccaba8;
+}
 
 [type="checkbox"], [type="radio"] {
     box-sizing: border-box;
@@ -620,6 +629,7 @@ button:focus[data-tooltip]:not([disabled])::before {
 
 
 body .legend .tooltip-info {
+  cursor: default;
   margin-right:auto;text-transform:none;text-align:left;filter:none;
   background: #f3f3b6;
   background: #FBEBCA;

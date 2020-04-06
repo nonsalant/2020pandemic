@@ -81,32 +81,35 @@
       <small class="legend">
         <button
         class="tooltip-info has-tooltip-right"
-        data-tooltip="1. Tap the labels on the right to re-order the chart.
-2. Tap the elements below for more info.
-3. Tap away from an element to hide its tooltip.
+        data-tooltip="Hover or tap the elements below for more info.
+Tap away from an element to hide its tooltip.
 ">
           <span style="font-style: italic; font-family: serif; font-weight: bold;">i</span>
         </button>
         (
-        <button onclick="sortList('.recovered', true);">
+        <button data-tooltip="order by" class="has-tooltip-bottom"
+                onclick="sortList('.recovered', true);">
           <span class="green" style="background:#fafffacc;">
             Recoveries
           </span>
         </button>
         +
-        <button onclick="sortList('.deaths', true);">
+        <button data-tooltip="order by" class="has-tooltip-bottom"
+                onclick="sortList('.deaths', true);">
           <span class="deaths">
             Deaths
           </span>
         </button>
         ) /
-        <button onclick="sortList('.cases', true);">
+        <button data-tooltip="order by" class="has-tooltip-bottom"
+                onclick="sortList('.cases', true);">
           <span class="red" style="background:#fffafacc;">
            Cases
           </span>
         </button>
         =
-        <button onclick="sortList('.c-ratio', true);">
+        <button data-tooltip="order by" class="has-tooltip-bottom"
+                onclick="sortList('.c-ratio', true);">
           <span class="gray">
             C. Ratio
           </span>
@@ -157,12 +160,9 @@
        style="width:100%;
               max-width: calc(100vw - 6em);
               display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;">
-      <button
-              data-tooltip="Delete individual countries"
-              class="button danger has-tooltip-bottom" style="margin-bottom:1em;"
+      <button class="button danger" style="margin-bottom:1em;"
               onclick="toggle_close_buttons(this)" id="toggle_close_buttons">Delete countries…</button>
-      <button class="button danger has-tooltip-bottom" style="margin-bottom:1em;"
-              data-tooltip="Empty the chart"
+      <button class="button danger" style="margin-bottom:1em;"
               onclick="remove_all_countries()">Delete all</button>
       <span style="margin-bottom:1em;" class="add-country"
             data-tooltip="Type below or use ▾ to select from dropdown">
