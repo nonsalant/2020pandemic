@@ -117,23 +117,24 @@ function render(id) {
         <button class="close" onclick="remove_country(this)" style="display:none;">
           ❌
         </button>
-        <button class="country-name has-tooltip-fade"
+        <button class="country-name has-tooltip-fade has-tooltip-bottom"
         data-tooltip="Cases per 1 million: ${data.casesPerOneMillion}
-Deaths per 1 million: ${data.deathsPerOneMillion}
-Tests per 1 million: ${data.testsPerOneMillion}
-
-Cases today: ${data.todayCases}
-Deaths today: ${data.todayDeaths}
-"
+Deaths per 1 million: ${data.deathsPerOneMillion}"
         target="_blank">
           ${unescape(id)}:
         </button>&nbsp;
         (
-        <b class="recovered" style="color:green">${recovered}</b>
+        <button
+        data-tooltip="Tests per 1 million: ${data.testsPerOneMillion}"
+       class="recovered no--has-tooltip-fade has-tooltip-bottom" style="color:green">${recovered}</button>
         +
-        <b class="deaths">${deaths}</b> )
+        <button
+        data-tooltip="Deaths today: ${data.todayDeaths}"
+        class="deaths no--has-tooltip-fade has-tooltip-bottom">${deaths}</button> )
         /
-        <b class="cases" style="color:red">${cases}</b>
+        <button
+        data-tooltip="Cases today: ${data.todayDeaths}"
+        class="cases no--has-tooltip-fade has-tooltip-bottom" style="color:red">${cases}</button>
         =
         <b class="c-ratio ${color_change(cr)}">
           ${cr}

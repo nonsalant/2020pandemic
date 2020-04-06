@@ -234,7 +234,8 @@ hr {
 .country-stats .block button {
   color: hsla(200, 26%, 15%, 1);
 }
-.country-stats .block:not(#Global) button:hover,
+
+/* .country-stats .block:not(#Global) button:hover, */
 .country-stats .block:not(#Global) button:focus {
   text-decoration: underline;
   text-decoration-color: hsla(200, 26%, 15%, .25);
@@ -367,7 +368,7 @@ hr {
   background: #ccffccff;
 }
 
-.deaths {
+body .block .deaths {
   background-color: #111;
   color: #eee;
   border-radius: 0.1em;
@@ -552,8 +553,8 @@ https://github.com/Wikiki/bulma-tooltip/blob/master/dist/css/bulma-tooltip.min.c
 [data-tooltip]:not(.is-loading)::before,
 [data-tooltip]:not([disabled])::after,
 [data-tooltip]:not([disabled])::before {
-  z-index: 1020;
-  text-align: right;
+  z-index: 4;
+/*   text-align: right; */
 }
 [data-tooltip]:not(.is-disabled).has-tooltip-fade::after,
 [data-tooltip]:not(.is-disabled).has-tooltip-fade::before,
@@ -566,6 +567,9 @@ https://github.com/Wikiki/bulma-tooltip/blob/master/dist/css/bulma-tooltip.min.c
 [data-tooltip]:not([disabled])::before {
   background: rgba(74, 74, 74, 0.9);
   background: hsla(200, 26%, 15%, .97);
+  background: hsl(40, 86%, 89%);
+  border: solid 1px #222;
+  color: #222;
   border-radius: 2px;
   content: attr(data-tooltip);
   padding: 0.5rem 1rem;
@@ -574,4 +578,5 @@ https://github.com/Wikiki/bulma-tooltip/blob/master/dist/css/bulma-tooltip.min.c
 }
 [data-tooltip]:not([disabled])::after {
   border-top-color: hsla(200, 26%, 15%, .97);
+  border-top-color: hsl(40, 86%, 89%);
 }
