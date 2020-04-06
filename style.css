@@ -628,7 +628,10 @@ body .legend .tooltip-info {
   align-items: center; justify-content: center;
 }
 
-.tooltip-info[data-tooltip]:not([disabled])::before {
+/* Special tooltips */
+
+.tooltip-info[data-tooltip]:not([disabled])::before,
+.chart-options [data-tooltip]:not([disabled])::before {
   background: hsl(40, 86%, 89%);
   border: solid 2px #22222255;
   color: #222;
@@ -637,6 +640,7 @@ body .legend .tooltip-info {
   max-width: calc(100vw - 5em);
 }
 
-.tooltip-info[data-tooltip]:not([disabled])::after {
+.tooltip-info[data-tooltip]:not([disabled])::after,
+.chart-options [data-tooltip]:not([disabled])::after {
   opacity:.5 !important;
 }
