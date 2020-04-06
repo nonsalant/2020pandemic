@@ -644,3 +644,8 @@ body .legend .tooltip-info {
 .chart-options [data-tooltip]:not([disabled])::after {
   opacity:.5 !important;
 }
+
+button.tooltip-info:focus[data-tooltip]:not([disabled])::before,
+.chart-options button:focus[data-tooltip]:not([disabled])::before {
+    font-weight: unset;
+}
