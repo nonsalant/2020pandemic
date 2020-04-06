@@ -158,8 +158,11 @@
               display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;">
       <button
               data-tooltip="Delete individual countries"
-              class="button danger" style="margin-bottom:1em;" onclick="toggle_close_buttons(this)" id="toggle_close_buttons">Delete countries…</button>
-      <button class="button danger" style="margin-bottom:1em;" onclick="remove_all_countries()">Delete all</button>
+              class="button danger has-tooltip-bottom" style="margin-bottom:1em;"
+              onclick="toggle_close_buttons(this)" id="toggle_close_buttons">Delete countries…</button>
+      <button class="button danger has-tooltip-bottom" style="margin-bottom:1em;"
+              data-tooltip="Empty the chart"
+              onclick="remove_all_countries()">Delete all</button>
       <span style="margin-bottom:1em;" class="add-country"
             data-tooltip="Type below or use ▾ to select from dropdown">
         <label for="country-list-choice"><small>➕</small> <u><b>Add</b></u>:</label>&nbsp;
@@ -375,7 +378,9 @@
       </span>
       <button
         data-tooltip="May take a few seconds"
-        class="button has-tooltip-top" style="margin-bottom:1em;" onclick="add_all_countries()">Add all</button>
+        class="button has-tooltip-bottom" style="margin-bottom:1em;" onclick="add_all_countries()">
+        Add all
+      </button>
     </p>
 
     <h4>info & privacy</h4>

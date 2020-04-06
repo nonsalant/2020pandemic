@@ -595,7 +595,7 @@ https://github.com/Wikiki/bulma-tooltip/blob/master/dist/css/bulma-tooltip.min.c
 } */
 [data-tooltip]:not([disabled])::after,
 [data-tooltip]:not(.is-disabled)::after {
-    opacity: .5 !important;
+    opacity: .75 !important;
 }
 
 
@@ -620,4 +620,8 @@ body .legend .tooltip-info {
   border-radius: 5px;
   box-sizing: border-box;
   max-width: calc(100vw - 5em);
+}
+
+.tooltip-info[data-tooltip]:not([disabled])::after {
+  opacity:.5 !important;
 }
