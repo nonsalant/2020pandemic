@@ -308,6 +308,7 @@ hr {
   background: var(--grain-pattern) repeat scroll center center rgba(245, 245, 245, 1);
   /**/
 }
+
 .legend button,
 .block button {
   background: none;
@@ -319,8 +320,18 @@ hr {
 	outline: inherit;
   text-transform: inherit;
 }
+/* .legend button:hover,
+.block button:hover {
+  filter: sepia(1);
+  z-index:5;
+} */
 .legend button:hover {
   filter: sepia(1);
+}
+
+.legend button:focus {
+  filter: none;
+  outline: solid #22222255;
 }
 .legend .c-ratio {
   margin-right: -2.35em;
@@ -408,8 +419,12 @@ input[type="text"] {
   font-size: .8em !important;
 }
 .close:hover {
-    opacity: 1;
+  opacity: 1;
   transform:scale(1.15);
+}
+.close:focus {
+  opacity: 1;
+  outline: solid #22222255;
 }
 
 .add-country {
