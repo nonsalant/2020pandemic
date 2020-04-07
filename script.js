@@ -114,34 +114,36 @@ function render(id) {
       }
 
       document.getElementById(id).innerHTML = `
-        <button class="close" onclick="remove_country(this)" style="display:none;">
-          ❌
-        </button>
-        <button class="country-name has-tooltip-bottom"
-        data-tooltip="Cases per 1 million: ${data.casesPerOneMillion}
-Deaths per 1 million: ${data.deathsPerOneMillion}"
-        >
-          ${unescape(id)}:
-        </button>&nbsp;
-        (
-        <button
-        data-tooltip="Tests per 1 million: ${data.testsPerOneMillion}"
-       class="recovered has-tooltip-bottom" style="color:green">${recovered}</button>
-        +
-        <button
-        data-tooltip="Deaths today: ${data.todayDeaths}"
-        class="deaths has-tooltip-bottom">${deaths}</button> )
-        /
-        <button
-        data-tooltip="Cases today: ${data.todayDeaths}"
-        class="cases has-tooltip-bottom" style="color:red">${cases}</button>
-        =
-        <b class="c-ratio ${color_change(cr)}">
-          ${cr}
-        </b>
-        <span class="flag" style="width:1em; text-align:center;">
-          ${flag_emoji(id)}
-        </span>
+      <div class="block-data">
+          <button class="close" onclick="remove_country(this)" style="display:none;">
+            ❌
+          </button>
+          <button class="country-name has-tooltip-bottom"
+          data-tooltip="Cases per 1 million: ${data.casesPerOneMillion}
+  Deaths per 1 million: ${data.deathsPerOneMillion}"
+          >
+            ${unescape(id)}:
+          </button>&nbsp;
+          (
+          <button
+          data-tooltip="Tests per 1 million: ${data.testsPerOneMillion}"
+         class="recovered has-tooltip-bottom" style="color:green">${recovered}</button>
+          +
+          <button
+          data-tooltip="Deaths today: ${data.todayDeaths}"
+          class="deaths has-tooltip-bottom">${deaths}</button> )
+          /
+          <button
+          data-tooltip="Cases today: ${data.todayDeaths}"
+          class="cases has-tooltip-bottom" style="color:red">${cases}</button>
+          =
+          <b class="c-ratio ${color_change(cr)}">
+            ${cr}
+          </b>
+          <span class="flag" style="width:1em; text-align:center;">
+            ${flag_emoji(id)}
+          </span>
+      </div> <!-- /.block-data -->
       `;
     })
     .then(() => {
@@ -309,7 +311,7 @@ function add_all_countries() {
 // }
 
 function remove_country(el) {
-  el.parentNode.remove();
+  el.parentNode.parentNode.remove();
   console.log(unescape(el.parentNode.id)+' removed.')
 
   let pandemicSavedCountries = localStorage.getItem('pandemicSavedCountries');
