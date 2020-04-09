@@ -12,10 +12,6 @@ localStorageInit();
 render_stuff();
 //let auto_refresh = setInterval(render_stuff, 3000);
 
-function clearTooltips() {
-
-}
-
 
 function render_stuff() {
   render_hero();
@@ -57,7 +53,7 @@ function render_hero() {
       </small>
 
       <style>
-      #virus:before {
+      .virus:before {
         /* Grab Google image graph (pie chart) */
         background: url("https://chart.googleapis.com/chart?cht=p&chd=t:${percentage},${percentageEmpty}&chs=200x200&chco=DCD3C0,ffefcc") center center no-repeat;
         background-size: contain;
@@ -121,7 +117,7 @@ function render(id) {
           <button class="close" onclick="remove_country(this)" style="display:none;">
             ❌
           </button>
-          <button class="country-name has-tooltip-bottom"
+          <button class="country-name has-tooltip-right"
           data-tooltip="Cases per 1 million: ${data.casesPerOneMillion}
   Deaths per 1 million: ${data.deathsPerOneMillion}"
           >
