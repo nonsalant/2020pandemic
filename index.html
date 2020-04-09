@@ -20,11 +20,12 @@
 
 <body>
 
-  <!--
+<!-- codepen.io/nonsalant/pen/jOPQRrE.html -->
+<!--
+  https://cdpn.io/e/jOPQRrE
   https://2020pandemic.netlify.com/
-  https://codepen.io/nonsalant/pen/jOPQRrE
   https://github.com/nonsalant/2020pandemic
-  -->
+-->
 
   <div class="container" ontouchstart="javascript: return 0;">
 
@@ -51,8 +52,18 @@
         </small>
       </h3>
 
-      <p>COVID-19 becomes <i>inactivated</i>
-        when people who have it die or recover.
+      <p>COVID-19
+        <button class="has-tooltip-bottom no-button-styles"
+                data-tooltip="The virus becomes inactivated when
+people who have it die or recover.">
+          <em style=""
+              >“inactivation”</em>
+        </button>
+        <sup class="tooltip-info"
+             style="font-size:.7em; border:solid 2px #fff; width:1.75em; display:none;">
+          <span>i</span>
+          </sup>
+        as a percentage of the total number of cases.
       </p>
     </section>
     <!-- hero section -->
@@ -99,7 +110,7 @@
         <small class="legend">
           <button
           class="tooltip-info has-tooltip-right"
-          data-tooltip="Tap or hover the elements below for more info">
+          data-tooltip="Tap the names & numbers for more info">
             <span>i</span>
           </button>
           (

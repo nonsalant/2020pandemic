@@ -1,3 +1,5 @@
+/* codepen.io/nonsalant/pen/jOPQRrE.js */
+
 // Open external links in new tabs
 let links = document.links;
 for (let i = 0, linksLength = links.length; i < linksLength; i++) {
