@@ -34,10 +34,7 @@ function toggle_auto_refresh(checked) {
 
 function render_hero() {
   let url = "https://coronavirus-19-api.herokuapp.com/all/";
-  fetch(url)
-    .then((response) => {
-      return response.json();
-    })
+  fetch(url).then((response)=>{return response.json();})
     .then((data) => {
       let recovered = Number(data.recovered.toFixed(0));
       let deaths = Number(data.deaths.toFixed(0));
@@ -46,9 +43,17 @@ function render_hero() {
       let percentage = (((recovered + deaths) / cases) * 100).toFixed(0);
       let percentageEmpty = 100 - percentage;
 
+      let cr_precise = ((recovered + deaths) / cases);
+      let cr = cr_precise.toFixed(2);
+
       document.getElementById("hero").innerHTML = `
       <div class="percentage-bar" style="width:${percentage}%;">
+        <button class="no-button-styles"
+        style="cursor: default !important;"
+        data-tooltip="C. RATIO = ${cr_precise.toFixed(4)}"
+        >
         ${percentage}%
+        </button>
       </div>
       <small class="percentage-empty">
           ${percentageEmpty}% 🦠 ACTIVE CASES
@@ -102,7 +107,11 @@ function render(id) {
       let recovered = Number(data.recovered.toFixed(0));
       let deaths = Number(data.deaths.toFixed(0));
       let cases = Number(data.cases.toFixed(0));
-      let cr = ((recovered + deaths) / cases).toFixed(2);
+      let cr_precise = ((recovered + deaths) / cases);
+      let cr = cr_precise.toFixed(2);
+      let percentage = (((recovered + deaths) / cases) * 100).toFixed(0);
+      let percentageEmpty = 100 - percentage;
+
       function color_change(cr) {
         let colorClass = "gray";
         if (Number(cr) < 0.1) {
@@ -138,9 +147,13 @@ function render(id) {
           data-tooltip="Cases today: ${data.todayDeaths}"
           class="cases has-tooltip-bottom" style="color:red">${cases}</button>
           =
-          <b class="c-ratio ${color_change(cr)}">
-            ${cr}
-          </b>
+          <button
+          data-tooltip="${cr_precise.toFixed(3)} (${percentage}% )"
+          class="c-ratio-wrapper has-tooltip-bottom">
+            <b class="c-ratio ${color_change(cr)}">
+              ${cr}
+            </b>
+          </button>
           <span class="flag" style="width:1em; text-align:center;">
             ${flag_emoji(id)}
           </span>

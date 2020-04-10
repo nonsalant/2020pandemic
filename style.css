@@ -8,7 +8,7 @@
 body {
   font-family: Helvetica, sans-serif;
   background: var(--grain-pattern) repeat scroll center center #b3b3b3;
-  background-color: #ffff0007;
+  background-color: rgba(255, 255, 0, 0.03);
   background-blend-mode: soft-light;
   font-family: "Open Sans", sans-serif;
   font-feature-settings: 'tnum';
@@ -219,7 +219,6 @@ p > u::after {
 
 .percentage-bar {
   transition: all 0.5s ease-in-out;
-
   min-width: 1.5em;
   float: left;
   text-align: center;
@@ -237,8 +236,8 @@ p > u::after {
   line-height: 0.75em;
   height: 2.1em;
 
-  background: var(--grain-pattern) repeat scroll center center #bbbbbb66;
-  box-shadow: 1px 0 0px 1px #bbbbbbdd;
+  background: var(--grain-pattern) repeat scroll center center rgba(187, 187, 187, 0.4);
+  box-shadow: 1px 0 0px 1px rgba(187, 187, 187, 0.87);
 }
 
 .percentage-empty {
@@ -301,19 +300,27 @@ p > u::after {
 }
 
 
-.country-stats .block:not(#Global):hover .country-name {
+.country-stats .block:not(#Global) button,
+.country-stats .block#Global button.c-ratio-wrapper {
   text-decoration:underline;
-  /*   text-decoration-style:dashed;  */
   text-decoration-color:#eee;
 }
 
 .country-stats .block:not(#Global):hover button:focus,
-.country-stats .block:not(#Global) button:focus {
+.country-stats .block:not(#Global) button:focus,
+.country-stats .block#Global:hover button.c-ratio-wrapper:focus,
+.country-stats .block#Global button.c-ratio-wrapper:focus {
   text-decoration: underline;
-  text-decoration-color: hsla(200, 26%, 15%, .25);
   text-decoration-color: hsla(200, 26%, 15%, .25);
 }
 
+
+.country-stats .block:not(#Global) button.deaths {
+  text-decoration-color:rgba(238, 238, 238, 0.2);
+}
+.country-stats .block:not(#Global) button.deaths:focus {
+  text-decoration-color:rgba(238, 238, 238, 0.4);
+}
 
 
 .block[id]:empty:after {
@@ -345,7 +352,8 @@ p > u::after {
 
 .block::before {
     color: #999;
-    font-weight: normal;
+    font-weight: normal; font-size:.75em;
+    font-family: "Open Sans", sans-serif;
     content: counter(list_counter) ".";
     margin: 0;
     display: inline-block;
@@ -396,6 +404,8 @@ p > u::after {
 
 
 .legend {
+  min-height: 3.5em;
+  border-radius: .1em .1em 0 0;
   font-family: "Open Sans Condensed", sans-serif;
   text-transform: uppercase;
   display: flex;
@@ -481,11 +491,11 @@ p > u::after {
   /*display: none;*/
   opacity: 0;
 }
-#Global button {
+#Global button:not(.c-ratio) {
   cursor:default;
 }
-#Global button:before,
-#Global button:after {
+#Global button:not(.c-ratio-wrapper):before,
+#Global button:not(.c-ratio-wrapper):after {
   display:none;
 }
 
