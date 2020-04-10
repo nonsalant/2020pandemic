@@ -2,9 +2,9 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/3379a00d-11ab-4703-ad96-e0c89477e20b/deploy-status)](https://app.netlify.com/sites/2020pandemic/deploys)
 
-*Virus “inactivation" as a % of the total number of cases*
+*Virus “inactivation” as a % of the total number of cases*
 
-If the percentage in the gray box (currently at 26%) reaches 100, it means there are no more active COVID-19 cases.
+If the percentage in the gray box (26% at the time of taking the screenshot below) reaches 100, it means there are no more active COVID-19 cases.
 
 **https://2020pandemic.netlify.com**
 
