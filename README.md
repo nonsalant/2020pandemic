@@ -11,4 +11,5 @@ If the percentage in the gray box (currently at 26%) reaches 100, it means there
 <a href="https://2020pandemic.netlify.com/">
 <img src="1A98A2E4-14D2-4714-81C1-B235F1C1728E.jpeg" alt="27 percent inactivated">
 </a>
-
+<br><br>
+A front end exercise in balancing load times, using the Fetch API, localStorage, and lots of on-the-fly CSS generated content 
