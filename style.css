@@ -15,7 +15,7 @@ body {
   font-variant-numeric: tabular-nums;
   font-size:19px;
   padding:0;
-
+  
 }
 
 
@@ -58,7 +58,7 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-
+  
 }
 
 h2 {
@@ -121,7 +121,7 @@ li {
   }
 }
 
-/*
+/* 
 SVG underline
 https://codepen.io/nonsalant/pen/MxoQgR
 */
@@ -212,7 +212,7 @@ p > u::after {
   display: flex;
   align-items: center;
   min-height: 2em;
-
+  
   background: var(--grain-pattern) repeat scroll center center #ffff1155;
   background: var(--grain-pattern) repeat scroll center center hsla(41, 100%, 90%, 1);
 }
@@ -235,7 +235,7 @@ p > u::after {
   flex-direction: column;
   line-height: 0.75em;
   height: 2.1em;
-
+  
   background: var(--grain-pattern) repeat scroll center center rgba(187, 187, 187, 0.4);
   box-shadow: 1px 0 0px 1px rgba(187, 187, 187, 0.87);
 }
@@ -261,7 +261,7 @@ p > u::after {
   padding-top:0;
   text-transform:uppercase;
   display: flex;
-  align-items: center;
+  align-items: center; 
   flex-wrap:wrap;
 }
 .cr-section .after-equals {
@@ -338,7 +338,7 @@ p > u::after {
 .legend {
   text-align: right;
   display: block;
-
+  
   /*   margin-bottom: 0.5em; */
 
   min-height: 2em;
@@ -371,26 +371,26 @@ p > u::after {
 .block {
   counter-increment: list_counter;
   transition:all .3s ease-out;
-
+  
   border-radius:.3em;
-
+  
   border-bottom: solid 1px #ccc;
   padding: 0.25em;
   background: #ffffff;
-
+  
   min-height:3em;
-
+  
   margin:0 !important;
-
+  
   /*display: list-item;
   list-style: decimal;
   margin-left: 1.5em;
-  padding-left:0; */
-
+  padding-left:0; */  
+  
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-
+  
 }
 
 .block-data {
@@ -419,8 +419,8 @@ p > u::after {
   background: none;
   color: #333;
   padding: 0.5em 0.8em 0.5em 0.2em;
-
-
+  
+  
   /*background: var(--grain-pattern) repeat scroll center center #cccccc44; */
   background-color: #cccccc44;
   border-bottom: solid 1px #aaa;
@@ -535,7 +535,7 @@ input, button {
   font-size: 16px;
   font-family: var(--ui-font);
   border-radius: .25rem;
-
+  
 /*   padding-top: .25rem;
   padding-bottom: .4rem; */
   line-height:2rem;
@@ -547,7 +547,7 @@ input[type="text"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-
+  
   padding-left:.25em;
   border:solid 1px #ddd;
   box-shadow: 0 1px 2px 1px #dddddddd;
@@ -560,6 +560,7 @@ input[type="text"] {
   opacity: .75;
   transition: all .2s ease-out;
   font-size: .8em !important;
+  text-decoration:none !important;
 }
 .close:hover {
   opacity: 1;
@@ -579,7 +580,7 @@ input[type="text"] {
   #toggle_close_buttons {
     float:none;
     margin-left:auto; margin-right:auto;
-
+    
   }
 } */
 @media (min-width:500px) {
@@ -618,9 +619,9 @@ input::-webkit-calendar-picker-indicator {
   padding-right: 1rem;
   /**
   padding-top: .25rem;
-  padding-bottom: .4rem;
+  padding-bottom: .4rem; 
   /**/
-  font-weight: 700;
+  font-weight: 700; 
   border-radius: .25rem;
   font-weight: 600;
   border: solid 1px #4299e1;
@@ -628,7 +629,7 @@ input::-webkit-calendar-picker-indicator {
   cursor: pointer;
   transition:all .175s ease-out;
   font-family: var(--ui-font);
-
+  
   color: #2b6cb0;
   color: hsla(41, 88%, 25%, 1);
   border: solid 1px #ccaba8;
@@ -770,7 +771,7 @@ button:focus[data-tooltip]:not([disabled])::before {
 body .container .tooltip-info {
   cursor: default;
   margin-right:auto;text-transform:none;text-align:left;filter:none;
-  background: #f3f3b6;
+  background: #f3f3b6; 
   background: #FBEBCA;
   border: solid 2px #ffffffaa;
   display: inline-flex;
@@ -782,8 +783,8 @@ body .container .tooltip-info {
   align-items: center; justify-content: center;
 }
 .tooltip-info span {
-  font-style: italic;
-  font-family: serif;
+  font-style: italic; 
+  font-family: serif; 
   font-weight: bold;
 }
 .tooltip-info::before {
@@ -794,7 +795,7 @@ body .container .tooltip-info {
 /**/
 
 .chart-options {
-  width:100%;
+  width:100%; 
   max-width: calc(100vw - 6em);
   display:flex;
   justify-content:space-between;
@@ -810,8 +811,8 @@ body .container .tooltip-info {
 }
 
 .no-button-styles em {
-  text-decoration:underline;
-  text-decoration-style:dotted;
+  text-decoration:underline; 
+  text-decoration-style:dotted; 
   text-decoration-color:#bbb;
   font-style: normal;
 }
