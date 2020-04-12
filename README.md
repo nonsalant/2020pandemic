@@ -9,7 +9,7 @@ If the percentage in the gray box (26% at the time of taking the screenshot belo
 **https://2020pandemic.netlify.com**
 
 <a href="https://2020pandemic.netlify.com/">
-<img src="1A98A2E4-14D2-4714-81C1-B235F1C1728E.jpeg" alt="27 percent inactivated">
+<img src="ss.jpg" alt="27 percent inactivated">
 </a>
 <br><br>
 A front end exercise in balancing load times, using the Fetch API, localStorage, and lots of on-the-fly CSS generated content 
