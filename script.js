@@ -6,7 +6,7 @@ for (let i = 0, linksLength = links.length; i < linksLength; i++) {
   if (links[i].hostname != window.location.hostname) {
     links[i].target = '_blank';
     links[i].rel = 'noopener';
-  }
+  } 
 }
 
 localStorageInit();
@@ -42,7 +42,7 @@ function render_hero() {
 
       let percentage = (((recovered + deaths) / cases) * 100).toFixed(0);
       let percentageEmpty = 100 - percentage;
-
+    
       let cr_precise = ((recovered + deaths) / cases);
       let cr = cr_precise.toFixed(2);
 
@@ -80,38 +80,49 @@ function render_hero() {
 function render_blocks() {
   let blocks = document.getElementsByClassName("block");
   for (let i = 0; i < blocks.length; i++) {
-    render(blocks[i].id);
+    render(blocks[i].id); 
     let blocks_array=[];
     blocks_array[i]=blocks[i].id;
     //console.log(blocks_array[i]);
-  }
-
+  } 
+  
 }
 
 function render(id) {
-
+  
   if (!id) return;
-
+  
   let url = ""; //let txt = '{"cases":422966,"deaths":18906,"recovered":109143}';
   if (id === "Global") {
     url = "https://coronavirus-19-api.herokuapp.com/all/";
   } else {
     url = "https://coronavirus-19-api.herokuapp.com/countries/" + id;
   }
-
+  //console.log(url);
   fetch(url)
     .then((response) => {
       return response.json();
     })
     .then((data) => {
-      let recovered = Number(data.recovered.toFixed(0));
-      let deaths = Number(data.deaths.toFixed(0));
-      let cases = Number(data.cases.toFixed(0));
-      let cr_precise = ((recovered + deaths) / cases);
+      let recovered, deaths, cases, cr_precise, percentage;
+      if(data.recovered) recovered = Number(data.recovered.toFixed(0));
+      else recovered = 0;
+      if (data.deaths) deaths = Number(data.deaths.toFixed(0));
+      else deaths = 0;
+      if (data.cases) {
+        cases = Number(data.cases.toFixed(0));
+        cr_precise = ((recovered + deaths) / cases);
+        percentage = (((recovered + deaths) / cases) * 100).toFixed(0);
+      } else {
+        cases = 0;
+        cr_precise = 0;
+        percentage = 0;
+      }
+      
       let cr = cr_precise.toFixed(2);
-      let percentage = (((recovered + deaths) / cases) * 100).toFixed(0);
+      
       let percentageEmpty = 100 - percentage;
-
+    
       function color_change(cr) {
         let colorClass = "gray";
         if (Number(cr) < 0.1) {
@@ -128,26 +139,26 @@ function render(id) {
           <button class="close" onclick="remove_country(this)" style="display:none;">
             ❌
           </button>
-          <button class="country-name has-tooltip-right"
-          data-tooltip="Cases per 1 million: ${data.casesPerOneMillion}
+          <button class="country-name has-tooltip-right" 
+          data-tooltip="Cases per 1 million: ${data.casesPerOneMillion} 
   Deaths per 1 million: ${data.deathsPerOneMillion}"
           >
             ${unescape(id)}:
           </button>&nbsp;
-          (
-          <button
+          ( 
+          <button 
           data-tooltip="Tests per 1 million: ${data.testsPerOneMillion}"
          class="recovered has-tooltip-bottom" style="color:green">${recovered}</button>
           +
-          <button
+          <button 
           data-tooltip="Deaths today: ${data.todayDeaths}"
-          class="deaths has-tooltip-bottom">${deaths}</button> )
+          class="deaths has-tooltip-bottom">${deaths}</button> ) 
           /
-          <button
+          <button 
           data-tooltip="Cases today: ${data.todayDeaths}"
-          class="cases has-tooltip-bottom" style="color:red">${cases}</button>
-          =
-          <button
+          class="cases has-tooltip-bottom" style="color:red">${cases}</button> 
+          = 
+          <button 
           data-tooltip="${cr_precise.toFixed(3)} (${percentage}% )"
           class="c-ratio-wrapper has-tooltip-bottom">
             <b class="c-ratio ${color_change(cr)}">
@@ -168,9 +179,9 @@ function render(id) {
 function sortList(sortBy=".cases", stopRefreshing = false) {
   let i, switching, b, shouldSwitch;
   switching = true;
-
+  
   if(stopRefreshing) stop_auto_refresh();
-
+  
   while (switching) {
     switching = false;
     b = document.querySelectorAll(".country-stats .block:not(#Global)");
@@ -201,12 +212,12 @@ function stop_auto_refresh() {
 
 function toggle_close_buttons(element) {
   let close_buttons = document.querySelectorAll('.close');
-
+  
   if (!close_buttons) return;
-
+  
   if (typeof(close_buttons[0]) != 'undefined' && close_buttons != null) {
     if (close_buttons[0].style.display == 'none') {
-
+      
       stop_auto_refresh();
 
       element.innerHTML = '&nbsp;&nbsp;&nbsp;Done deleting.&nbsp;&nbsp;';
@@ -218,13 +229,13 @@ function toggle_close_buttons(element) {
 
       for (let i=0; i<close_buttons.length; i++) {
         close_buttons[i].style.display = 'none';
-      }
+      } 
     }
   } else {
     element.innerHTML = 'Delete countries…';
-
-  }
-
+    
+  } 
+  
 }
 
 
@@ -233,7 +244,7 @@ document.querySelector('#country-list-choice').addEventListener('change', (event
   let new_country = document.getElementById('country-list-choice').value;
   new_country = new_country.split(' ');
   new_country.shift();
-  new_country = new_country.join(' ');
+  new_country = new_country.join(' '); 
   if (new_country && !document.getElementById(escape(new_country)) ) {
     console.log(new_country +" added.");
     add_country(new_country);
@@ -252,7 +263,7 @@ function localStorageInit() {
   let pandemicSavedCountries = localStorage.getItem('pandemicSavedCountries');
   if (!pandemicSavedCountries || pandemicSavedCountries === '{}') {
     let aaa = document.querySelectorAll('.country-stats .block');
-    // let bb = aaa.map(x => x.id);
+    // let bb = aaa.map(x => x.id); 
     let aa = '';
     for (let i=0; i<aaa.length; i++) {
       aa += aaa[i].id;
@@ -285,7 +296,7 @@ function add_all_countries() {
     let new_country = countryOptions[i].value;
     new_country = new_country.split(' ');
     new_country.shift();
-    new_country = new_country.join(' ');
+    new_country = new_country.join(' '); 
     if (new_country && !document.getElementById(escape(new_country)) ) {
       console.log(new_country +" added.");
       add_country(new_country, false);
@@ -303,7 +314,7 @@ function add_all_countries() {
 //     switching = false;
 //     b = document.querySelectorAll("#country-list option");
 //     for (i = 0; i < (b.length - 1); i++) {
-//       shouldSwitch = false;
+//       shouldSwitch = false; 
 //       if ( b[i].value && b[i+1].value ) {
 //         let current = b[i].value.split(' ');
 //         current.shift();
@@ -325,9 +336,9 @@ function add_all_countries() {
 // }
 
 function remove_country(el) {
-  el.parentNode.parentNode.remove();
+  el.parentNode.parentNode.remove(); 
   console.log(unescape(el.parentNode.parentNode.id)+' removed.')
-
+  
   let pandemicSavedCountries = localStorage.getItem('pandemicSavedCountries');
   let bbb = pandemicSavedCountries.split(',');
   let bb='';
@@ -340,7 +351,7 @@ function remove_country(el) {
 }
 
 // add_country('Diamond Princess');
-function add_country(country) {
+function add_country(country) { 
   document.querySelector('.country-stats').innerHTML += `
     <div id="${escape(country)}" class="block"></div>
   `;
@@ -354,7 +365,7 @@ function add_country(country) {
     bbb = [country];
   } else {
     let pandemicSavedCountries = localStorage.getItem('pandemicSavedCountries');
-    bbb = pandemicSavedCountries.split(',');
+    bbb = pandemicSavedCountries.split(','); 
     bbb.push(escape(country));
   }
   localStorage.setItem( 'pandemicSavedCountries', bbb.join() );
