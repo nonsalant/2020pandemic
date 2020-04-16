@@ -57,10 +57,6 @@ h1, h2, h3, h4 {
   font-family: "Open Sans Condensed", sans-serif;
 }
 
-h1 {
-  
-}
-
 h2 {
   font-size: 1.35em;
 }
@@ -357,7 +353,6 @@ p > u::after {
     content: counter(list_counter) ".";
     margin: 0;
     display: inline-block;
-    float: left;
     text-align: right;
     width: 1.65em;
 }
