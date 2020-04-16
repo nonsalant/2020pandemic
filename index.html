@@ -23,7 +23,7 @@
 <!-- codepen.io/nonsalant/pen/jOPQRrE.html -->
 <!--
   https://cdpn.io/e/jOPQRrE
-  https://2020pandemic.netlify.com/
+  https://2020pandemic.netlify.app/
   https://github.com/nonsalant/2020pandemic
 -->
 
@@ -34,16 +34,50 @@
       <span class="virus">🦠</span>
       <span class="logo-text">Live Coronavirus
         Containment Stats</span>
-    </h1>
+    </h1> 
   </section>
   
   <!-- hero section -->
   <section class="section">
     <h2>
-      <span class="numeral">1.</span> Inactivated virus, worldwide&nbsp;🌎<br>
+      <span class="numeral">1.</span> 
+      COVID-19
+        “inactivation”
+      <sup class="tooltip-info" 
+           style="font-size:.7em; border:solid 2px #fff; width:1.75em; display:none;">
+        <span>i</span>
+        </sup>
+      as a % of the total number of cases
     </h2>
-
-    <h3 id="hero" style="margin:1.5em 0;">
+    
+    <br>
+    
+          
+    <p id="hero-local-label">
+      <button class="has-tooltip-bottom no-button-styles"
+              data-tooltip="  The virus becomes inactivated when 
+people who have it die or recover.">
+        <em>Inactivated virus</em>
+      </button>
+       in your country:
+    </p>
+    <h3 id="hero-local" class="percentage" style="margin:1.5em 0; margin-top:.5em;">
+      <div class="percentage-bar" style="width:3em;">
+        &nbsp;&nbsp;…%
+      </div>
+      <small class="percentage-empty">
+        …% 🦠 ACTIVE CASES
+      </small>
+    </h3>
+    
+    <p id="hero-global-label">
+      <button class="has-tooltip-bottom no-button-styles"
+              data-tooltip="  The virus becomes inactivated when 
+people who have it die or recover.">
+        <em>Inactivated virus</em>
+      </button>, worldwide:
+    </p>
+    <h3 id="hero-global" class="percentage" style="margin:1.5em 0; margin-top:.5em;">
       <div class="percentage-bar" style="width:3em;">
         &nbsp;&nbsp;…%
       </div>
@@ -52,60 +86,50 @@
       </small>
     </h3>
 
-    <p>COVID-19
-      <button class="has-tooltip-bottom no-button-styles"
-              data-tooltip="The virus becomes inactivated when 
-people who have it die or recover.">
-        “<em>inactivation</em>”
-      </button>
-      <sup class="tooltip-info" 
-           style="font-size:.7em; border:solid 2px #fff; width:1.75em; display:none;">
-        <span>i</span>
-        </sup>
-      as a percentage of the total number of cases.
-    </p>
+
+    
   </section>
   <!-- hero section -->
 
-  <section class="section cr-section">
-    <h2 class="section">
-      <span class="numeral" style="margin-right:.6em; margin-bottom:0;">
-        2.
-      </span>
-      <b style="line-height:3em;">C<small>ontainment</small>
-      R<small>atio</small> =</b>
+
+  <section class="section" style="padding-top:0;">
+    <h2 style="padding:1em 0; padding-top:0;" class="">
+      <span class="numeral">2.</span> How different countries have dealt with the pandemic&nbsp;so&nbsp;far
+    </h2>
+    
+    <section class="cr-section">
       
-      <small class="after-equals">
-        <span style="border-bottom: solid; padding-bottom: .5em; margin-bottom: .5em;">
-        <span class="green" style="background:#fafffacc;">
-        Recoveries</span>
-        +
-        <span class="deaths" style="margin:0 .25em;">
-         Deaths</span>
-        </span>
-        
-        <span style="text-align: center;">
-          <span class="red" style="background:#fffafacc;">
-            Total Cases
+      <p style="clear:both;">
+        The <i>Containment Ratio</i> (<i>C. R<small>ATIO</small></i> below)
+        represents the proportion
+        of cases where the coronavirus has become unable to spread because the person carrying it has either died or recovered.
+      </p>
+      
+      <h2 class="section" style="display: flex; justify-content: flex-end;">
+        <b style="line-height:3em;">C<small>.</small>
+        R<small>atio</small> =</b>
+
+        <small class="after-equals">
+          <span style="border-bottom: solid; padding-bottom: .5em; margin-bottom: .5em;">
+          <span class="green" style="background:#fafffacc;">
+          Recoveries</span>
+          +
+          <span class="deaths" style="margin:0 .25em;">
+           Deaths</span>
           </span>
-        </span>
 
-      </small>
-    </h2>
+          <span style="text-align: center;">
+            <span class="red" style="background:#fffafacc;">
+              Total Cases
+            </span>
+          </span>
 
-    <p style="clear:both;">
-      The <i>Containment Ratio</i> (<i>C. RATIO</i> in the following chart)
-      represents the proportion
-      of cases where the coronavirus has become unable to spread because the person carrying it has either died or recovered.
-    </p>
-  </section>
+        </small>
+      </h2>
+      
+    </section>
 
-  <section class="section">
-    <h2 style="padding:1em 0;" class="">
-      <span class="numeral">3.</span> How different countries have dealt with the pandemic&nbsp;so&nbsp;far
-    </h2>
-
-    <figure class="section" style="margin:0; padding:0;">
+    <figure class="section" style="margin:0; margin-top:.5em; padding:0;">
       <small class="legend">
         <button 
         class="tooltip-info has-tooltip-right" 
