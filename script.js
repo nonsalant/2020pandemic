@@ -18,8 +18,7 @@ render_stuff();
 function render_stuff() {
   render_hero();
   render_blocks();
-  // https://codepen.io/nonsalant/pen/31e52a1632fec0cdc3fde7f09cc17b36.js
-  // replace #global2 is w/ hero-[country]
+
   
   fetch('//www.cloudflare.com/cdn-cgi/trace')
     .then((response) => {
@@ -32,8 +31,6 @@ function render_stuff() {
       //console.log("hero-"+value);
       render_hero(("hero-"+value));
     });
-  // document.getElementById("hero-local").id= "hero-"+value;
-  // call render_blocks("hero-"+value);
 } 
 
 function toggle_auto_refresh(checked) {
@@ -57,7 +54,7 @@ function render_hero(id="hero-global") {
     
   } else {
     if (id.startsWith("hero-")) {
-      country=id.split("hero-")[1]; // TODO: replace " " /w "%20"
+      country=id.split("hero-")[1].replace(/ /g, "%20");
       url = "https://coronavirus-19-api.herokuapp.com/countries/" + country;
       //console.log(url)
     }
@@ -78,7 +75,6 @@ function render_hero(id="hero-global") {
       let extra_css;
     
       if (country == "Global") {
-        //alert('test')
         extra_css = `
         <style>
         .virus:before {
@@ -99,12 +95,14 @@ function render_hero(id="hero-global") {
         }
         </style>
         `;
-        
       } else {
         extra_css = `
         <style>
         #hero-local-label:before {
           content: "${flag_emoji(country)} ";
+        }
+        #hero-local-label:after {
+          content: " ${country}:";
         }
         <style>
         `
