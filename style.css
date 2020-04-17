@@ -213,6 +213,15 @@ p > u::after {
   background: var(--grain-pattern) repeat scroll center center hsla(41, 100%, 90%, 1);
 }
 
+/* #hero-local-label:before, */
+#hero-local-label:after {
+  content: "…";
+}
+
+#hero-global-label:before {
+  content: "🌎 ";
+}
+
 .percentage-bar {
   transition: all 0.5s ease-in-out;
   min-width: 1.5em;
@@ -263,7 +272,7 @@ p > u::after {
 .cr-section .after-equals {
   display: inline-flex;
   flex-direction: column;
-  margin-left: .5em;
+  margin-right: .5em;
   font-weight: normal;
   font-family: 'Open Sans Condensed', sans-serif;
 }
