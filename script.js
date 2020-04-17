@@ -26,6 +26,8 @@ function render_stuff() {
     })
     .then((data) => { 
       let value = data.split('\n')[8].split('loc=')[1];
+      if (value=="US")
+        value = "USA";
       value = getCountryName(value);
       document.getElementById("hero-local").id= "hero-"+value;
       //console.log("hero-"+value);
