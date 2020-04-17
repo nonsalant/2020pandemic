@@ -819,7 +819,9 @@ body .container .tooltip-info {
   color: inherit;
   cursor: help !important;
   outline: none;
-  border-radius:none;
+  -webkit-appearance: none;
+  border-radius:0;
+  -webkit-border-radius:0;
 }
 
 .no-button-styles em {
