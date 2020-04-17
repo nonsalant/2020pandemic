@@ -597,7 +597,7 @@ input[type="text"] {
 }
 
 .numeral {
-    display: inline-flex;
+    display: inline-flex; display:none;
     align-items: center;
     justify-content: center;
     width: 2.2em;
@@ -605,7 +605,7 @@ input[type="text"] {
     margin-bottom: .5em;
     border: solid 2px #ffffffdd;
     border-radius: 50%;
-    font-size: .4em;
+    font-size: .5em;
     line-height: 1em;
     font-family: "Open Sans", sans-serif;
     font-weight: normal;
@@ -615,6 +615,10 @@ input[type="text"] {
     transform: scale(1.2);
 /*     z-index: -1; */
 }
+/* #hero-global-label:before,
+#hero-local-label:before {
+  font-size: .6em;
+} */
 
 input::-webkit-calendar-picker-indicator {
   opacity: 100;
