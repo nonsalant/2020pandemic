@@ -212,7 +212,7 @@ function render(id) {
           class="cases has-tooltip-bottom" style="color:red">${cases}</button> 
           = 
           <button 
-          data-tooltip="${cr_precise.toFixed(3)} (${percentage}% )"
+          data-tooltip="${cr_precise.toFixed(4)} (${percentage}% )"
           class="c-ratio-wrapper has-tooltip-bottom">
             <b class="c-ratio ${color_change(cr)}">
               ${cr}
