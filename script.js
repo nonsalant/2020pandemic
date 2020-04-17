@@ -77,7 +77,7 @@ function render_hero(id="hero-global") {
       if (country == "Global") {
         extra_css = `
         <style>
-        .virus:before {
+        .virus::before {
           /* Grab Google image graph (pie chart) */
           background: url("https://chart.googleapis.com/chart?cht=p&chd=t:${percentage},${percentageEmpty}&chs=200x200&chco=DCD3C0,ffefcc") center center no-repeat;
           background-size: contain;
@@ -90,7 +90,7 @@ function render_hero(id="hero-global") {
           display: block;
         }
 
-        #hero-global-label:before {
+        #hero-global-label::before {
           content: "🌎 ";
         }
         </style>
@@ -98,11 +98,11 @@ function render_hero(id="hero-global") {
       } else {
         extra_css = `
         <style>
-        #hero-local-label:before {
+        #hero-local-label::before {
           content: "${flag_emoji(country)} ";
         }
-        #hero-local-label:after {
-          content: " ${country}:";
+        #hero-local-label::after {
+          content: " in ${country}:";
         }
         <style>
         `
