@@ -107,11 +107,13 @@ function render_hero(id="hero-global") {
         <style>
         `
       }
+
       document.getElementsByTagName('body')[0].innerHTML+=extra_css;
 
       document.getElementById(id).innerHTML = `
-      <div class="percentage-bar" style="width:${percentage}%;">
-        <button class="no-button-styles"
+      <div class="percentage-bar" style="width:${percentage}%;
+        background: var(--grain-pattern) repeat scroll center center rgba(187, 187, 187, 0.4);">
+        <button class="no-button-styles has-tooltip-right"
         style="cursor: default !important;"
         data-tooltip="C. RATIO = ${cr_precise.toFixed(4)}"
         >

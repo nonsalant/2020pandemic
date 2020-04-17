@@ -62,7 +62,9 @@ h2 {
 }
 
 h4 {
-  text-transform:uppercase;
+    text-transform: uppercase;
+    color: #222;
+    font-size: 1.15em;
 }
 
 hr {
@@ -152,7 +154,25 @@ p > u::after {
 /* /SVG underline */
 
 
+/* Box/card shadows */
 
+.box-shadow,
+.percentage {
+  box-shadow: 0.2em 0.2em 0.5em #eeeec9, 
+            -0.2em -0.2em 0.5em #ffffff;
+}
+
+.country-stats,
+.virus::before,
+.legend,
+.tooltip-info {
+  box-shadow: 0 1px 3px #44444411, 
+            0 -1px 3px #ffffff;
+}
+
+.legend {
+  border-radius:.3em !important;
+}
 
 
 .logo {
@@ -243,8 +263,8 @@ p > u::after {
   flex-direction: column;
   line-height: 0.75em;
   height: 2.1em;
-  
-  background: var(--grain-pattern) repeat scroll center center rgba(187, 187, 187, 0.4);
+
+  background: linear-gradient(145deg, #c3bbaa, #e8dfca);
   box-shadow: 1px 0 0px 1px rgba(187, 187, 187, 0.87);
 }
 
@@ -312,6 +332,8 @@ p > u::after {
 .country-stats .block#Global button.c-ratio-wrapper {
   text-decoration:underline;
   text-decoration-color:#eee;
+  text-decoration-color:#f0f0f0;
+  text-decoration-thickness:1px;
 }
 
 .country-stats .block:not(#Global):hover button:focus,
