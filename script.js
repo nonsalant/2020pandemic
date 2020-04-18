@@ -15,11 +15,7 @@ render_stuff();
 //let auto_refresh = setInterval(render_stuff, 3000);
 
 
-function render_stuff() {
-  render_hero();
-  render_blocks();
-
-  
+function render_stuff() {  
   fetch('//www.cloudflare.com/cdn-cgi/trace')
     .then((response) => {
       return response.text();
@@ -32,6 +28,9 @@ function render_stuff() {
       document.getElementById("hero-local").id= "hero-"+value;
       //console.log("hero-"+value);
       render_hero(("hero-"+value));
+    
+      render_hero();
+      render_blocks();
     });
 } 
 
@@ -212,7 +211,7 @@ function render(id) {
           class="cases has-tooltip-bottom" style="color:red">${cases}</button> 
           = 
           <button 
-          data-tooltip="${cr_precise.toFixed(4)} (${percentage}% )"
+          data-tooltip="${cr_precise.toFixed(3)} (${percentage}% )"
           class="c-ratio-wrapper has-tooltip-bottom">
             <b class="c-ratio ${color_change(cr)}">
               ${cr}
