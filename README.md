@@ -6,9 +6,9 @@
 
 If the percentage in the gray box (26% at the time of taking the screenshot below) reaches 100, it means there are no more active COVID-19 cases.
 
-**https://2020pandemic.netlify.com**
+**https://2020pandemic.netlify.app**
 
-<a href="https://2020pandemic.netlify.com/">
+<a href="https://2020pandemic.netlify.app/">
 <img src="ss.jpg" alt="27 percent inactivated">
 </a>
 <br><br>
