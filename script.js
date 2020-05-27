@@ -358,6 +358,7 @@ function add_all_countries() {
   }
 }
 
+/*
 ////sort_options();
 // function sort_options() {
 //   let i, switching, b, shouldSwitch;
@@ -386,6 +387,7 @@ function add_all_countries() {
 //     }
 //   }
 // }
+*/
 
 function remove_country(el) {
   el.parentNode.parentNode.remove(); 
@@ -404,6 +406,7 @@ function remove_country(el) {
 
 // add_country('Diamond Princess');
 function add_country(country) { 
+  //console.log('test');
   document.querySelector('.country-stats').innerHTML += `
     <div id="${escape(country)}" class="block"></div>
   `;
@@ -1088,6 +1091,13 @@ var isoCountries = {
     'ZM' : 'Zambia',
     'ZW' : 'Zimbabwe'
 };
+
+document.querySelector('.add-country').style.display = 'none';
+/*** 
+.add-country hidden because
+the following func breaks the "add_country" functionality 
+without showing any error in the console: 
+***/
 
 function getCountryName(countryCode) {
     if (isoCountries.hasOwnProperty(countryCode)) {
