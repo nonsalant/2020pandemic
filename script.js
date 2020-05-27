@@ -207,7 +207,7 @@ function render(id) {
           class="deaths has-tooltip-bottom">${deaths}</button> ) 
           /
           <button 
-          data-tooltip="Cases today: ${data.todayDeaths}"
+          data-tooltip="Cases today: ${data.todayCases}"
           class="cases has-tooltip-bottom" style="color:red">${cases}</button> 
           = 
           <button 
